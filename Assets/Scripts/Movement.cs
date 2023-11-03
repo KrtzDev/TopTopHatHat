@@ -17,11 +17,12 @@ public class Movement : CharacterState
 
 	public override void OnEnter()
 	{
-		
+		Debug.Log("Enter Move");
 	}
 
 	public override void OnExit()
 	{
+		Debug.Log("Exit Move");
 		_rigidbody.velocity = Vector3.zero;
 	}
 

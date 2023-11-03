@@ -209,8 +209,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266082153}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: -0.0000000187227, z: 0.0000000044198294, w: 0.973249}
-  m_LocalPosition: {x: 0, y: 5, z: -10}
+  m_LocalRotation: {x: 0.3006394, y: 0.000000016176227, z: -0.000000005099105, w: 0.9537379}
+  m_LocalPosition: {x: 0, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -530,10 +530,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 5, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_FollowOffset: {x: 0, y: 7, z: -10}
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -611,8 +611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a4e679071b32f4eb64c3c01ce63532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dash: {fileID: 1222651949}
-  _movement: {fileID: 1222651948}
+  <Dash>k__BackingField: {fileID: 1222651949}
+  <Movement>k__BackingField: {fileID: 1222651948}
 --- !u!54 &1222651945
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -704,6 +704,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea0131a952d5104c808501b2d432a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dashDuration: 0.2
+  _dashForce: 50
 --- !u!1 &1387860445
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,8 +888,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763696761}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: -0.0000000187227, z: 0.0000000044198294, w: 0.973249}
-  m_LocalPosition: {x: 0, y: 5, z: -10}
+  m_LocalRotation: {x: 0.3006394, y: 0.000000016176227, z: -0.000000005099105, w: 0.9537379}
+  m_LocalPosition: {x: 0, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

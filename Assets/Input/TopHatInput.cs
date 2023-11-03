@@ -29,7 +29,7 @@ public partial class @TopHatInput: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""09321a4c-c515-4547-9ab8-78bb148cbc62"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
