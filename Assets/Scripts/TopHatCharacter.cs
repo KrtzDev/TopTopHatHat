@@ -4,51 +4,83 @@ using UnityEngine.InputSystem;
 
 public class TopHatCharacter : MonoBehaviour
 {
-	const float SPEED_MULTIPLIER = 100;
+	public Vector2 MoveInput { get; private set; }
 
-	[SerializeField]
-	private float _moveSpeed;
+	[field: SerializeField]
+	public Dash Dash {  get; private set; }
+	[field: SerializeField]
+	public Movement Movement {  get; private set; }
 
-	private Rigidbody _rigidbody;
+	private CharacterState _currentState;
 
 	private TopHatInput _topHatInput;
 
-	private Vector2 _moveInput;
-
 	private void Awake()
 	{
-		_rigidbody = GetComponent<Rigidbody>();
-
 		_topHatInput = GameManager.instance.TopHatInput;
+
+		Dash.InitState(this);
+		Movement.InitState(this);
+
+		_currentState = Movement;
 	}
 
 	private void OnEnable()
 	{
+		Dash.OnDashFinished += DashFinished;
+
 		_topHatInput.Enable();
 
-		_topHatInput.Character.Move.performed += MoveInput;
+		_topHatInput.Character.Move.performed += MovePerformed;
 		_topHatInput.Character.Move.canceled += MoveCanceled;
+
+		_topHatInput.Character.Dash.performed += DashInput;
 	}
+
 
 	private void OnDisable()
 	{
-		_topHatInput.Character.Move.performed -= MoveInput;
+		Dash.OnDashFinished -= DashFinished;
+
+		_topHatInput.Character.Move.performed -= MovePerformed;
 		_topHatInput.Character.Move.canceled -= MoveCanceled;
+
+		_topHatInput.Character.Dash.performed -= DashInput;
+	}
+
+	private void DashFinished()
+	{
+		TransitionToState(Movement);
+	}
+
+	private void MovePerformed(InputAction.CallbackContext context)
+	{
+		MoveInput = context.ReadValue<Vector2>();
+		TransitionToState(Movement);
 	}
 
 	private void MoveCanceled(InputAction.CallbackContext context)
 	{
-		_moveInput = Vector2.zero;
+		MoveInput = Vector2.zero;
 	}
 
-	private void MoveInput(InputAction.CallbackContext context)
+	private void DashInput(InputAction.CallbackContext context)
 	{
-		_moveInput = context.ReadValue<Vector2>();
+		TransitionToState(Dash);
+	}
+
+	public void TransitionToState(CharacterState characterState)
+	{
+		if (_currentState == characterState)
+			return;
+
+		_currentState.OnExit();
+		_currentState = characterState;
+		_currentState.OnEnter();
 	}
 
 	private void FixedUpdate()
 	{
-		Vector3 movedir = new Vector3(_moveInput.x, 0 ,_moveInput.y);
-		_rigidbody.velocity = _moveSpeed * SPEED_MULTIPLIER * Time.fixedDeltaTime * movedir;
+		_currentState?.OnUpdate();
 	}
 }
