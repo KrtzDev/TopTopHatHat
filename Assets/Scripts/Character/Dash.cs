@@ -26,7 +26,7 @@ public class Dash : CharacterState
 
 		_currentDashTime = _dashDuration;
 
-		Vector3 movedir = new Vector3(topHatCharacter.MoveInput.x, 0, topHatCharacter.MoveInput.y);
+		Vector3 movedir = new Vector3(_topHatCharacter.MoveInput.x, 0, _topHatCharacter.MoveInput.y);
 		_rigidbody.AddForce(movedir * _dashForce, ForceMode.Impulse);
 	}
 
