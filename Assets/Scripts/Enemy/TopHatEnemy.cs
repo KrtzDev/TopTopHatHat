@@ -16,6 +16,7 @@ public class TopHatEnemy : MonoBehaviour
 	private void Awake()
 	{
 		EnemyMoveTowardsPlayer.InitState(this);
+		EnemyAttack.InitState(this);
 		_currentState = EnemyMoveTowardsPlayer;
 	}
 
@@ -38,6 +39,12 @@ public class TopHatEnemy : MonoBehaviour
 
 	private void EvaluateStateChange()
 	{
+		float distanceToPlayer = (GameManager.instance.TopHatCharacter.transform.position - transform.position).magnitude;
+
+		_isInAttackRange = distanceToPlayer <= EnemyAttack.AttackRange;
+		EnemyAttack.TickCooldown(Time.deltaTime);
+		_hasAttackCooldown = EnemyAttack.AttackCooldown >= 0;
+
 		if(CanAttack)
 			TransitionToState(EnemyAttack);
 	}
