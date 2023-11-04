@@ -24,12 +24,16 @@ public class TopHatCharacter : Actor
 	private bool _isDashing;
 	private bool _isDashOnCooldown;
 
+	public AdditionalTopHats AdditionalTopHats { get; private set; }
+
 	private bool CanDash => !_isDashing && !_isDashOnCooldown;
 
 	private void Awake()
 	{
 		_topHatInput = GameManager.instance.TopHatInput;
 		_health = GetComponent<Health>();
+
+		this.AdditionalTopHats = gameObject.GetComponentInChildren<AdditionalTopHats>();
 
 		Idle.InitState(this);
 		Movement.InitState(this);
@@ -155,4 +159,9 @@ public class TopHatCharacter : Actor
 	{
 		TransitionToState(Death);
 	}
+
+	public int GetCurrentHealth()
+    {
+		return _health.ReturnCurrentHealth();
+    }
 }
