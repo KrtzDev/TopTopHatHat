@@ -1,10 +1,7 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-	public static GameManager instance;
-
 	public TopHatInput TopHatInput 
 	{ 
 		get 
@@ -18,16 +15,6 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private TopHatInput _topHatInput;
 
-	private void Awake()
-	{
-		if (!instance)
-		{
-			instance = this;
-			DontDestroyOnLoad(instance);
-		}
-		else
-		{
-			Destroy(this);
-		}
-	}
+	[field: SerializeField]
+	public TopHatCharacter TopHatCharacter { get; private set; }
 }
