@@ -43,7 +43,7 @@ public class Movement : CharacterState
 			_topHatCharacter.transform.rotation =
 			   Quaternion.RotateTowards(_topHatCharacter.transform.rotation,
 			   Quaternion.LookRotation(movedirInput, Vector3.up),
-			   700f * Time.deltaTime);
+			   1200f * Time.deltaTime);
 		}
 	}
 }

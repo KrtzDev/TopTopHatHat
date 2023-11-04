@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyMoveTowardsPlayer : EnemyState
@@ -22,6 +23,8 @@ public class EnemyMoveTowardsPlayer : EnemyState
 
 	public override void OnUpdate()
 	{
-		_navMeshAgent.SetDestination(GameManager.instance.TopHatCharacter.transform.position);
+		Vector3 dirToPlayer = (transform.position - GameManager.instance.TopHatCharacter.transform.position).normalized;
+
+		_navMeshAgent.SetDestination(GameManager.instance.TopHatCharacter.transform.position - dirToPlayer * _navMeshAgent.stoppingDistance);
 	}
 }
