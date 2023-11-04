@@ -14,6 +14,9 @@ public class Dash : CharacterState
 
 	private float _currentDashTime;
 
+	[field: SerializeField]
+	public float DashCoolDownTime { get; private set; }
+
 	public override void InitState(TopHatCharacter topHatCharacter)
 	{
 		base.InitState(topHatCharacter);
