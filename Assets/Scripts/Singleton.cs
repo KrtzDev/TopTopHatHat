@@ -7,13 +7,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	protected virtual void Awake()
 	{
 		if (!instance)
-		{
 			instance = this as T;
-			DontDestroyOnLoad(instance);
-		}
 		else
-		{
 			Destroy(this);
-		}
 	}
 }
