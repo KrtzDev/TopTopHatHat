@@ -206,14 +206,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemiesToSpawn:
   - {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b, type: 3}
-  - {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b, type: 3}
+  - {fileID: 7452747485201204951, guid: 5aedfbfa3dcf32644a1045bb795b4933, type: 3}
   - {fileID: 792778081766950990, guid: 5a68e53d714bfe84caeb2d9ba42a88e5, type: 3}
   - {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b, type: 3}
   - {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b, type: 3}
-  - {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b, type: 3}
+  - {fileID: 7452747485201204951, guid: 5aedfbfa3dcf32644a1045bb795b4933, type: 3}
   - {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b, type: 3}
   - {fileID: 792778081766950990, guid: 5a68e53d714bfe84caeb2d9ba42a88e5, type: 3}
+  - {fileID: 7452747485201204951, guid: 5aedfbfa3dcf32644a1045bb795b4933, type: 3}
   - {fileID: 792778081766950990, guid: 5a68e53d714bfe84caeb2d9ba42a88e5, type: 3}
+  - {fileID: 7452747485201204951, guid: 5aedfbfa3dcf32644a1045bb795b4933, type: 3}
   _spawnPositions:
   - {fileID: 7287438159720790768}
   - {fileID: 7938042052697374527}
