@@ -16,6 +16,7 @@ public class TopHatCharacter : MonoBehaviour
 	public Attack Attack { get; private set; }
 
 	private CharacterState _currentState;
+	private Health _health;
 
 	private TopHatInput _topHatInput;
 	private bool _isDashing;
@@ -26,6 +27,7 @@ public class TopHatCharacter : MonoBehaviour
 	private void Awake()
 	{
 		_topHatInput = GameManager.instance.TopHatInput;
+		_health = GetComponent<Health>();
 
 		Idle.InitState(this);
 		Movement.InitState(this);
@@ -136,5 +138,17 @@ public class TopHatCharacter : MonoBehaviour
 	private void FixedUpdate()
 	{
 		_currentState?.OnUpdate();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.TryGetComponent(out TopHatCharacter topHatCharacter))
+			return;
+
+		if(other.TryGetComponent(out DamageZone damageComponent))
+		{
+			_health.TakeDamage(damageComponent.DamageAmount);
+
+		}
 	}
 }
