@@ -134,6 +134,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4862492774626498621}
   - component: {fileID: 4327384371899045385}
+  - component: {fileID: 6514654877471181968}
+  - component: {fileID: 2232532989362299749}
   m_Layer: 0
   m_Name: Ability Manager
   m_TagString: Untagged
@@ -170,6 +172,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _takeByIDs: []
   _giveByIDs: []
+  _takeTaskBoolList: 
+  _giveTaskBoolList: 
+--- !u!114 &6514654877471181968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324099189501861582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd856f8d8f153a4984d58002b605b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2232532989362299749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324099189501861582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dae809aabfaa4e4f9b01b96917d8391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &97550125485777073
 PrefabInstance:
   m_ObjectHideFlags: 0

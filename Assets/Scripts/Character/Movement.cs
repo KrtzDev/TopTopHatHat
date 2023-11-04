@@ -6,7 +6,9 @@ public class Movement : CharacterState
 	const float SPEED_MULTIPLIER = 100;
 
 	[SerializeField]
-	private float _moveSpeed;
+	private float _currentMoveSpeed;
+	private float _baseMoveSpeed;
+	private float _oldMoveSpeed;
 
 	private Rigidbody _rigidbody;
 	private Animator _animator;
@@ -16,6 +18,8 @@ public class Movement : CharacterState
 		base.InitState(topHatCharacter);
 		_rigidbody = GetComponent<Rigidbody>();
 		_animator = GetComponentInChildren<Animator>();
+		_baseMoveSpeed = _currentMoveSpeed;
+		_oldMoveSpeed = _currentMoveSpeed;
 	}
 
 	public override void OnEnter()
@@ -35,7 +39,7 @@ public class Movement : CharacterState
 	{
 		Vector3 movedirInput = new Vector3(_topHatCharacter.MoveInput.x, 0, _topHatCharacter.MoveInput.y);
 
-		_rigidbody.velocity = _moveSpeed * SPEED_MULTIPLIER * Time.fixedDeltaTime * movedirInput;
+		_rigidbody.velocity = _currentMoveSpeed * SPEED_MULTIPLIER * Time.fixedDeltaTime * movedirInput;
 
 		if (movedirInput != Vector3.zero)
 		{
@@ -46,4 +50,25 @@ public class Movement : CharacterState
 			   1200f * Time.deltaTime);
 		}
 	}
+	
+	public void IncreaseMoveSpeed(float amount)
+    {
+		_currentMoveSpeed += amount;
+    }
+
+	public void DecreaseMoveSpeed(float amount)
+    {
+		_currentMoveSpeed -= amount;
+	}
+
+	public void ResetMoveSpeed()
+    {
+		_currentMoveSpeed = _oldMoveSpeed;
+    }
+
+	public void SetMoveSpeed0()
+    {
+		_oldMoveSpeed = _currentMoveSpeed;
+		_currentMoveSpeed = 0;
+    }
 }

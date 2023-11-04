@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dashDuration: 0.2
   _dashForce: 50
-  <DashCoolDownTime>k__BackingField: 2
+  <DashCoolDownTime>k__BackingField: 2.5
 --- !u!114 &734123623865425131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977ec5fbeb8603340ae90fd264be893a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 7
+  _currentMoveSpeed: 0
 --- !u!114 &5108716366355164091
 MonoBehaviour:
   m_ObjectHideFlags: 0
