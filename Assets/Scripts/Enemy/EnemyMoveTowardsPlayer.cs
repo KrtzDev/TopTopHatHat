@@ -25,6 +25,6 @@ public class EnemyMoveTowardsPlayer : EnemyState
 	{
 		Vector3 dirToPlayer = (transform.position - GameManager.instance.TopHatCharacter.transform.position).normalized;
 
-		_navMeshAgent.SetDestination(GameManager.instance.TopHatCharacter.transform.position - dirToPlayer * _navMeshAgent.stoppingDistance);
+		_navMeshAgent.SetDestination(GameManager.instance.TopHatCharacter.transform.position + (dirToPlayer * _navMeshAgent.stoppingDistance));
 	}
 }

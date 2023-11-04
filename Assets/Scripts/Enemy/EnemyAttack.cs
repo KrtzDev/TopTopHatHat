@@ -11,6 +11,9 @@ public class EnemyAttack : EnemyState
 	[field: SerializeField]
 	public float AttackRange {  get; private set; }
 
+	[SerializeField]
+	private DamageZone _slimeAttackDamageZone;
+
 	private NavMeshAgent _navmeshAgent;
 	private Animator _animator;
 	private SlimeEnemyAnimEvents _animEvents;
@@ -36,6 +39,8 @@ public class EnemyAttack : EnemyState
 
 		_animEvents.OnAttackFinishedAnimEvent += AttackFinished;
 		_animator.SetTrigger("Attack");
+
+		_slimeAttackDamageZone.gameObject.SetActive(true);
 	}
 
 	public override void OnExit()
@@ -45,6 +50,8 @@ public class EnemyAttack : EnemyState
 		_navmeshAgent.isStopped = false;
 
 		AttackCooldown = _attackCooldown;
+
+		_slimeAttackDamageZone.gameObject.SetActive(false);
 	}
 
 	public override void OnUpdate()

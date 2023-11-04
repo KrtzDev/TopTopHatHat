@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TopHatCharacter : MonoBehaviour
+public class TopHatCharacter : Actor
 {
 	public Vector2 MoveInput { get; private set; }
 
@@ -14,6 +14,8 @@ public class TopHatCharacter : MonoBehaviour
 	public Idle Idle { get; private set; }
 	[field: SerializeField]
 	public Attack Attack { get; private set; }
+	[field: SerializeField]
+	public Death Death { get; private set; }
 
 	private CharacterState _currentState;
 	private Health _health;
@@ -33,6 +35,7 @@ public class TopHatCharacter : MonoBehaviour
 		Movement.InitState(this);
 		Dash.InitState(this);
 		Attack.InitState(this);
+		Death.InitState(this);
 
 		_currentState = Idle;
 	}
@@ -127,7 +130,7 @@ public class TopHatCharacter : MonoBehaviour
 
 	public void TransitionToState(CharacterState characterState)
 	{
-		if (_currentState == characterState)
+		if (_currentState == characterState || _currentState == Death)
 			return;
 
 		_currentState.OnExit();
@@ -142,13 +145,14 @@ public class TopHatCharacter : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.TryGetComponent(out TopHatCharacter topHatCharacter))
-			return;
-
 		if(other.TryGetComponent(out DamageZone damageComponent))
 		{
 			_health.TakeDamage(damageComponent.DamageAmount);
-
 		}
+	}
+
+	public override void OnActorDeath()
+	{
+		TransitionToState(Death);
 	}
 }

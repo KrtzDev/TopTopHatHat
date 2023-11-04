@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 734123623865425131}
   - component: {fileID: 5108716366355164091}
   - component: {fileID: 3434449372196750862}
+  - component: {fileID: 8994417851639986371}
   - component: {fileID: 7935949634866819780}
   m_Layer: 0
   m_Name: Character
@@ -176,6 +177,7 @@ MonoBehaviour:
   <Movement>k__BackingField: {fileID: 734123623865425131}
   <Idle>k__BackingField: {fileID: 5108716366355164091}
   <Attack>k__BackingField: {fileID: 3434449372196750862}
+  <Death>k__BackingField: {fileID: 8994417851639986371}
 --- !u!114 &5096860523003608734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977ec5fbeb8603340ae90fd264be893a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentMoveSpeed: 0
+  _currentMoveSpeed: 7
 --- !u!114 &5108716366355164091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +233,18 @@ MonoBehaviour:
   _stabDamageZone: {fileID: 8748273103216371685}
   _slashDamageZone: {fileID: 957614016082104456}
   _topSlashDamageZone: {fileID: 7727618309651362291}
+--- !u!114 &8994417851639986371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503810978201973692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bd707fd959353346955e07dcb709e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7935949634866819780
 MonoBehaviour:
   m_ObjectHideFlags: 0
