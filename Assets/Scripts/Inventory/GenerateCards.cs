@@ -8,11 +8,18 @@ public class GenerateCards : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < _cards.Count; i++)
+        if(_cards.Count <= TaskAndGiveGenerator.instance.TakeByIDsAmount() && _cards.Count <= TaskAndGiveGenerator.instance.GiveeByIDsAmount())
         {
-            _cards[i].SetCardNameIcon(RandomNameGenerator.instance.CombinedNameAndIcon());
-            _cards[i].SetTake(TaskAndGiveGenerator.instance.GetRandomTakeTask());
-            _cards[i].SetGive(TaskAndGiveGenerator.instance.GetRandomGiveTask());
+            for (int i = 0; i < _cards.Count; i++)
+            {
+                _cards[i].SetCardNameIcon(RandomNameGenerator.instance.CombinedNameAndIcon());
+                _cards[i].SetTake(TaskAndGiveGenerator.instance.GetRandomTakeTask());
+                _cards[i].SetGive(TaskAndGiveGenerator.instance.GetRandomGiveTask());
+            }
+        }
+        else
+        {
+            Debug.LogError("NOT ENOUGH TAKE OR GIVE TASKS FOR AMOUNT OF CARDS");
         }
     }
 

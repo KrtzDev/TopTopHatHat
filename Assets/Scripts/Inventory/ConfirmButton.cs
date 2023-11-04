@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -12,13 +13,39 @@ public class ConfirmButton : MonoBehaviour
     [SerializeField] private float _waitTimeForFadeOut;
     private int _boolCounter;
 
+    [SerializeField] private List<TaskAndGiveGenerator.TakeByID> _usedTakeTasks = new();
+    [SerializeField] private List<TaskAndGiveGenerator.TakeByID> _NOTusedTakeTasks = new();
+    [SerializeField] private List<TaskAndGiveGenerator.GiveByID> _usedGiveTasks = new();
+    [SerializeField] private List<TaskAndGiveGenerator.GiveByID> _NOTusedGiveTasks = new();
+
     public void ConfirmSelection()
     {
         CheckBools();
         if(_boolCounter == 2)
         {
-            // activate effects
-            // put not-used takes and gives back to their lists
+            for (int i = 0; i < _usedTakeTasks.Count; i++)
+            {
+                // put used Tasks to Ability Manager
+                AbilityManager.instance.AddToTakeList(_usedTakeTasks[i]);
+            }
+
+            for (int i = 0; i < _NOTusedTakeTasks.Count; i++)
+            {
+                // put not used Tasks to Task Generator
+                TaskAndGiveGenerator.instance.AddToTakeList(_NOTusedTakeTasks[i]);
+            }
+
+            for (int i = 0; i < _usedGiveTasks.Count; i++)
+            {
+                // put used Tasks to Ability Manager
+                AbilityManager.instance.AddToGiveList(_usedGiveTasks[i]);
+            }
+
+            for (int i = 0; i < _NOTusedGiveTasks.Count; i++)
+            {
+                // put not used Tasks to Task Generator
+                TaskAndGiveGenerator.instance.AddToGiveList(_NOTusedGiveTasks[i]);
+            }
 
             // go to next level
 
@@ -35,6 +62,10 @@ public class ConfirmButton : MonoBehaviour
     private void CheckBools()
     {
         _boolCounter = 0;
+        _usedTakeTasks = new();
+        _NOTusedTakeTasks = new();
+        _usedGiveTasks = new();
+        _NOTusedGiveTasks = new();
 
         for (int i = 0; i < _cardsArray.Length; i++)
         {
@@ -43,6 +74,13 @@ public class ConfirmButton : MonoBehaviour
             if (_cardsArray[i].IsPicked())
             {
                 _boolCounter++;
+                _usedTakeTasks.Add(_cardsArray[i].ActiveTakeTask());
+                _NOTusedGiveTasks.Add(_cardsArray[i].ActiveGiveTask());
+            }
+            else
+            {
+                _usedGiveTasks.Add(_cardsArray[i].ActiveGiveTask());
+                _NOTusedTakeTasks.Add(_cardsArray[i].ActiveTakeTask());
             }
         }
     }

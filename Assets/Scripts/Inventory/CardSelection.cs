@@ -9,6 +9,8 @@ public class CardSelection : MonoBehaviour
     [SerializeField] private bool _isPicked;
     private Vector3 _newScale = new Vector3(2.5f, 2.5f, 1f);
     private Vector3 _oldScale;
+    private ColorBlock _startColorBlock;
+    [SerializeField] private Color _pickedColor;
 
     [SerializeField] private Image _icon;
 
@@ -16,9 +18,13 @@ public class CardSelection : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _take;
     [SerializeField] private TextMeshProUGUI _give;
 
+    private TaskAndGiveGenerator.TakeByID _takeTask;
+    private TaskAndGiveGenerator.GiveByID _giveTask;
+
     private void Awake()
     {
         _oldScale = gameObject.GetComponent<RectTransform>().localScale;
+        _startColorBlock = gameObject.GetComponent<Button>().colors;
         _isPicked = false;
     }
 
@@ -38,12 +44,16 @@ public class CardSelection : MonoBehaviour
     {
         _isPicked = true;
         gameObject.GetComponent<RectTransform>().localScale = _newScale;
+        ColorBlock tempColorBlock = gameObject.GetComponent<Button>().colors;
+        tempColorBlock.normalColor = _pickedColor;
+        gameObject.GetComponent<Button>().colors = tempColorBlock;
     }
 
     private void UnPickCard()
     {
         _isPicked = false;
         gameObject.GetComponent<RectTransform>().localScale = _oldScale;
+        gameObject.GetComponent<Button>().colors = _startColorBlock;
     }
 
     public bool IsPicked()
@@ -69,11 +79,23 @@ public class CardSelection : MonoBehaviour
 
     public void SetTake(TaskAndGiveGenerator.TakeByID takeTask)
     {
+        _takeTask = takeTask;
         _take.text = takeTask.text;
     }
 
     public void SetGive(TaskAndGiveGenerator.GiveByID giveTask)
     {
+        _giveTask = giveTask;
         _give.text = giveTask.text;
+    }
+
+    public TaskAndGiveGenerator.TakeByID ActiveTakeTask()
+    {
+        return _takeTask;
+    }
+
+    public TaskAndGiveGenerator.GiveByID ActiveGiveTask()
+    {
+        return _giveTask;
     }
 }

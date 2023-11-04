@@ -50,4 +50,24 @@ public class TaskAndGiveGenerator : Singleton<TaskAndGiveGenerator>
 
         return current;
     }
+
+    public void AddToTakeList(TakeByID task)
+    {
+        _takeByIDs.Add(task);
+    }
+
+    public void AddToGiveList(GiveByID task)
+    {
+        _giveByIDs.Add(task);
+    }
+
+    public int TakeByIDsAmount()
+    {
+        return _takeByIDs.Count;
+    }
+
+    public int GiveeByIDsAmount()
+    {
+        return _giveByIDs.Count;
+    }
 }
