@@ -2,11 +2,11 @@
 
 public abstract class CharacterState : MonoBehaviour
 {
-	protected TopHatCharacter topHatCharacter;
+	protected TopHatCharacter _topHatCharacter;
 
 	public virtual void InitState(TopHatCharacter topHatCharacter)
 	{
-		this.topHatCharacter = topHatCharacter; 
+		_topHatCharacter = topHatCharacter; 
 	}
 
 	public abstract void OnEnter();

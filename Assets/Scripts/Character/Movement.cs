@@ -28,7 +28,8 @@ public class Movement : CharacterState
 
 	public override void OnUpdate()
 	{
-		Vector3 movedir = new Vector3(topHatCharacter.MoveInput.x, 0, topHatCharacter.MoveInput.y);
-		_rigidbody.velocity = _moveSpeed * SPEED_MULTIPLIER * Time.fixedDeltaTime * movedir;
+		Vector3 movedirInput = new Vector3(_topHatCharacter.MoveInput.x, 0, _topHatCharacter.MoveInput.y);
+
+		_rigidbody.velocity = _moveSpeed * SPEED_MULTIPLIER * Time.fixedDeltaTime * movedirInput;
 	}
 }
