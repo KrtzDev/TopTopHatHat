@@ -13,39 +13,39 @@ public class AbilityManager : Singleton<AbilityManager>
     [SerializeField] private List<bool> _takeTaskBoolList = new();
     [SerializeField] private List<bool> _giveTaskBoolList = new();
 
-    private void Start() // Load scene! Do each time a level is started.
-    {
-        ConvertToIDList(_takeByIDs);
-        ConvertToIDList(_giveByIDs);
+    //private void Start() // Load scene! Do each time a level is started.
+    //{
+    //    ConvertToIDList(_takeByIDs);
+    //    ConvertToIDList(_giveByIDs);
 
-        _takeTaskBoolList = new();
-        _giveTaskBoolList = new();
+    //    _takeTaskBoolList = new();
+    //    _giveTaskBoolList = new();
 
-        for(int i = 0; i < _takeByIDs.Count; i++)
-        {
-            _takeTaskBoolList.Add(false);
-        }
+    //    for(int i = 0; i < _takeByIDs.Count; i++)
+    //    {
+    //        _takeTaskBoolList.Add(false);
+    //    }
 
-        for (int i = 0; i < _giveByIDs.Count; i++)
-        {
-            _giveTaskBoolList.Add(false);
-        }
+    //    for (int i = 0; i < _giveByIDs.Count; i++)
+    //    {
+    //        _giveTaskBoolList.Add(false);
+    //    }
 
-        for (int i = 0; i < _takeByIDs.Count; i++)
-        {
-            if (ListContainsIndex(_takeIDs, _takeByIDs[i].id))
-                _takeTaskBoolList[_takeByIDs[i].id] = true;
-        }
+    //    for (int i = 0; i < _takeByIDs.Count; i++)
+    //    {
+    //        if (ListContainsIndex(_takeIDs, _takeByIDs[i].id))
+    //            _takeTaskBoolList[_takeByIDs[i].id] = true;
+    //    }
 
-        for (int i = 0; i < _giveByIDs.Count; i++)
-        {
-            if(ListContainsIndex(_giveIDs, _giveByIDs[i].id))
-                _giveTaskBoolList[_giveByIDs[i].id] = true;
-        }
+    //    for (int i = 0; i < _giveByIDs.Count; i++)
+    //    {
+    //        if(ListContainsIndex(_giveIDs, _giveByIDs[i].id))
+    //            _giveTaskBoolList[_giveByIDs[i].id] = true;
+    //    }
 
-        ActivateTakeAbilities();
-        ActivateGiveAbilities();
-    }
+    //    ActivateTakeAbilities();
+    //    ActivateGiveAbilities();
+    //}
 
     public void ActivateTakeAbilities()
     {
