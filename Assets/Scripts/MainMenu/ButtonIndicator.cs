@@ -14,4 +14,10 @@ public class ButtonIndicator : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         _buttonSelector.SetActive(false);
     }
+
+    public void OnDisable()
+    {
+        _buttonSelector.SetActive(false);
+    }
+
 }
