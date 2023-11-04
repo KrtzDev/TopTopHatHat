@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6098044891387405305}
   - component: {fileID: 2355426418986853445}
   - component: {fileID: 7414312272633630068}
+  - component: {fileID: 1646657385906096362}
   m_Layer: 0
   m_Name: SlimeEnemy
   m_TagString: Untagged
@@ -122,6 +123,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <AttackCooldown>k__BackingField: 2
   <AttackRange>k__BackingField: 2
+--- !u!114 &1646657385906096362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824780371658087116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1e58dbe6308154e847ade1fc8c500c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 5
 --- !u!1001 &1703484797610442612
 PrefabInstance:
   m_ObjectHideFlags: 0
