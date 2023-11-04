@@ -10,6 +10,8 @@ public class TopHatCharacter : MonoBehaviour
 	public Dash Dash {  get; private set; }
 	[field: SerializeField]
 	public Movement Movement {  get; private set; }
+	[field: SerializeField]
+	public Idle Idle { get; private set; }
 
 	private CharacterState _currentState;
 
@@ -23,10 +25,11 @@ public class TopHatCharacter : MonoBehaviour
 	{
 		_topHatInput = GameManager.instance.TopHatInput;
 
-		Dash.InitState(this);
+		Idle.InitState(this);
 		Movement.InitState(this);
+		Dash.InitState(this);
 
-		_currentState = Movement;
+		_currentState = Idle;
 	}
 
 	private void OnEnable()
@@ -55,11 +58,18 @@ public class TopHatCharacter : MonoBehaviour
 	private void MovePerformed(InputAction.CallbackContext context)
 	{
 		MoveInput = context.ReadValue<Vector2>();
+		if(_currentState != Dash)
+			TransitionToState(Movement);
+
+		if (MoveInput == Vector2.zero && _currentState != Dash)
+			TransitionToState(Idle);
 	}
 
 	private void MoveCanceled(InputAction.CallbackContext context)
 	{
 		MoveInput = Vector2.zero;
+		if(_currentState != Dash)
+			TransitionToState(Idle);
 	}
 
 	private void DashInput(InputAction.CallbackContext context)
@@ -75,9 +85,13 @@ public class TopHatCharacter : MonoBehaviour
 	private void DashFinished()
 	{
 		_isDashing = false;
-		TransitionToState(Movement);
 		StopCoroutine(DashCooldown());
 		StartCoroutine(DashCooldown());
+
+		if(MoveInput != Vector2.zero)
+			TransitionToState(Movement);
+		else 
+			TransitionToState(Idle);
 	}
 
 	private IEnumerator DashCooldown()

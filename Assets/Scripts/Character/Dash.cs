@@ -6,6 +6,7 @@ public class Dash : CharacterState
 	public event Action OnDashFinished;
 
 	private Rigidbody _rigidbody;
+	private Animator _animator;
 
 	[SerializeField]
 	private float _dashDuration;
@@ -21,6 +22,7 @@ public class Dash : CharacterState
 	{
 		base.InitState(topHatCharacter);
 		_rigidbody = GetComponent<Rigidbody>();
+		_animator = GetComponentInChildren<Animator>();
 	}
 
 	public override void OnEnter()
@@ -31,11 +33,16 @@ public class Dash : CharacterState
 
 		Vector3 movedir = new Vector3(_topHatCharacter.MoveInput.x, 0, _topHatCharacter.MoveInput.y);
 		_rigidbody.AddForce(movedir * _dashForce, ForceMode.Impulse);
+
+		_animator.SetBool("IsDashing", true);
 	}
 
 	public override void OnExit()
 	{
 		Debug.Log("Exit Dash");
+		_rigidbody.velocity = Vector3.zero;
+
+		_animator.SetBool("IsDashing", false);
 	}
 
 	public override void OnUpdate()
