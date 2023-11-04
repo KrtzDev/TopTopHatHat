@@ -34,18 +34,20 @@ public class Attack : CharacterState
 		_topHatInput.Character.Attack.performed += Attack_performed;
 
 		_animator.SetTrigger("Attack1");
-		_attackCounter = 1;
+		_attackCounter = 0;
 	}
 
 	private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
 	{
 		Debug.Log(_attackCounter);
 
-		if (_canIncreaseAttackCounter && _attackCounter <= 3)
+		if (_canIncreaseAttackCounter && _attackCounter <= 2)
 		{
 			_canIncreaseAttackCounter = false;
 			_attackCounter++;
 		}
+		if (_attackCounter > 2)
+			_attackCounter = 0;
 	}
 
 	public override void OnExit()
@@ -57,11 +59,11 @@ public class Attack : CharacterState
 
 	public override void OnUpdate()
 	{
-		if (_attackCounter <= 3 && _canAttack)
+		if (_attackCounter <= 2 && _attackCounter > 0 && _canAttack)
 		{
-			if (_attackCounter == 2)
+			if (_attackCounter == 1)
 				_animator.SetTrigger("Attack2");
-			if (_attackCounter == 3)
+			if (_attackCounter == 2)
 				_animator.SetTrigger("Attack3");
 
 			_canAttack = false;
@@ -70,8 +72,8 @@ public class Attack : CharacterState
 
 	public void OnAttackAnimFinished()
 	{
-		OnAttackFinished();
 		_attackCounter = 0;
+		OnAttackFinished();
 	}
 
 	public void CanAttack()

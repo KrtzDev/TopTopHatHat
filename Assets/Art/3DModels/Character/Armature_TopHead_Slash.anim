@@ -17350,7 +17350,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.8333333
+  - time: 0.75
     functionName: OnCanComboAttackAnim
     data: 
     objectReferenceParameter: {fileID: 0}
