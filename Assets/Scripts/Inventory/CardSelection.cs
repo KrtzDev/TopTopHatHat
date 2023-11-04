@@ -9,6 +9,8 @@ public class CardSelection : MonoBehaviour
     [SerializeField] private bool _isPicked;
     private Vector3 _newScale = new Vector3(2.5f, 2.5f, 1f);
     private Vector3 _oldScale;
+    private ColorBlock _startColorBlock;
+    [SerializeField] private Color _pickedColor;
 
     [SerializeField] private Image _icon;
 
@@ -22,6 +24,7 @@ public class CardSelection : MonoBehaviour
     private void Awake()
     {
         _oldScale = gameObject.GetComponent<RectTransform>().localScale;
+        _startColorBlock = gameObject.GetComponent<Button>().colors;
         _isPicked = false;
     }
 
@@ -41,12 +44,16 @@ public class CardSelection : MonoBehaviour
     {
         _isPicked = true;
         gameObject.GetComponent<RectTransform>().localScale = _newScale;
+        ColorBlock tempColorBlock = gameObject.GetComponent<Button>().colors;
+        tempColorBlock.normalColor = _pickedColor;
+        gameObject.GetComponent<Button>().colors = tempColorBlock;
     }
 
     private void UnPickCard()
     {
         _isPicked = false;
         gameObject.GetComponent<RectTransform>().localScale = _oldScale;
+        gameObject.GetComponent<Button>().colors = _startColorBlock;
     }
 
     public bool IsPicked()
