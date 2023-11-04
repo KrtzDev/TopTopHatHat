@@ -111,6 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPicked: 0
+  _icon: {fileID: 5002024614643022281}
+  _name: {fileID: 6796064446063859675}
+  _take: {fileID: 840290715175275772}
+  _give: {fileID: 1512885238523569360}
 --- !u!1 &335553541420196890
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +697,7 @@ GameObject:
   - component: {fileID: 997022576752252059}
   - component: {fileID: 840290715175275772}
   m_Layer: 0
-  m_Name: GiveText
+  m_Name: TakeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

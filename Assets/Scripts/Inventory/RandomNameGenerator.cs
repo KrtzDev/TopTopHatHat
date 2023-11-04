@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RandomNameGenerator : MonoBehaviour
+public class RandomNameGenerator : Singleton<RandomNameGenerator>
 {
     [System.Serializable]
     public class WeaponIconByName
@@ -16,11 +16,6 @@ public class RandomNameGenerator : MonoBehaviour
             name = _name;
             icon = _icon;
         }
-    }
-
-    private void Start()
-    {
-        CombinedNameAndIcon();
     }
 
     [SerializeField] private List<WeaponIconByName> _weaponIconsByNames = new();
@@ -39,10 +34,8 @@ public class RandomNameGenerator : MonoBehaviour
     public WeaponIconByName CombinedNameAndIcon()
     {
         WeaponIconByName current = RandomItemType();
-        current.name = current.name + " of " + RandomItemDescription();
+        WeaponIconByName returnValue = new WeaponIconByName(current.name + " of " + RandomItemDescription(), current.icon);
 
-        Debug.Log(current.name);
-
-        return current;
+        return returnValue;
     }
 }
