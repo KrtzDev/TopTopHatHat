@@ -6,15 +6,56 @@ public class TopHatEnemy : MonoBehaviour
 
 	[field: SerializeField]
 	public EnemyMoveTowardsPlayer EnemyMoveTowardsPlayer {  get; private set; }
+	[field: SerializeField]
+	public EnemyAttack EnemyAttack { get; private set; }
+
+	private bool _isInAttackRange;
+	private bool _hasAttackCooldown;
+	public bool CanAttack => _isInAttackRange && !_hasAttackCooldown;
 
 	private void Awake()
 	{
 		EnemyMoveTowardsPlayer.InitState(this);
+		EnemyAttack.InitState(this);
 		_currentState = EnemyMoveTowardsPlayer;
+	}
+
+	private void OnEnable()
+	{
+		EnemyAttack.OnAttackFinished += EnemyAttack_OnAttackFinished;
+	}
+
+	private void EnemyAttack_OnAttackFinished()
+	{
+		TransitionToState(EnemyMoveTowardsPlayer);
 	}
 
 	private void FixedUpdate()
 	{
+		EvaluateStateChange();
+
 		_currentState?.OnUpdate();
+	}
+
+	private void EvaluateStateChange()
+	{
+		float distanceToPlayer = (GameManager.instance.TopHatCharacter.transform.position - transform.position).magnitude;
+
+		_isInAttackRange = distanceToPlayer <= EnemyAttack.AttackRange;
+		EnemyAttack.TickCooldown(Time.deltaTime);
+		_hasAttackCooldown = EnemyAttack.AttackCooldown >= 0;
+
+		if(CanAttack)
+			TransitionToState(EnemyAttack);
+	}
+
+	private void TransitionToState(EnemyState enemyState)
+	{
+		if (_currentState == enemyState)
+			return;
+
+		_currentState.OnExit();
+		_currentState = enemyState;
+		_currentState.OnEnter();
 	}
 }
