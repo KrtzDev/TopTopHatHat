@@ -12,6 +12,8 @@ public class TopHatCharacter : MonoBehaviour
 	public Movement Movement {  get; private set; }
 	[field: SerializeField]
 	public Idle Idle { get; private set; }
+	[field: SerializeField]
+	public Attack Attack { get; private set; }
 
 	private CharacterState _currentState;
 
@@ -28,6 +30,7 @@ public class TopHatCharacter : MonoBehaviour
 		Idle.InitState(this);
 		Movement.InitState(this);
 		Dash.InitState(this);
+		Attack.InitState(this);
 
 		_currentState = Idle;
 	}
@@ -35,6 +38,7 @@ public class TopHatCharacter : MonoBehaviour
 	private void OnEnable()
 	{
 		Dash.OnDashFinished += DashFinished;
+		Attack.OnAttackFinished += AttackFinished;
 
 		_topHatInput.Enable();
 
@@ -42,23 +46,28 @@ public class TopHatCharacter : MonoBehaviour
 		_topHatInput.Character.Move.canceled += MoveCanceled;
 
 		_topHatInput.Character.Dash.performed += DashInput;
+
+		_topHatInput.Character.Attack.performed += AttackInput;
 	}
 
 
 	private void OnDisable()
 	{
 		Dash.OnDashFinished -= DashFinished;
+		Attack.OnAttackFinished -= AttackFinished;
 
 		_topHatInput.Character.Move.performed -= MovePerformed;
 		_topHatInput.Character.Move.canceled -= MoveCanceled;
 
 		_topHatInput.Character.Dash.performed -= DashInput;
+
+		_topHatInput.Character.Attack.performed -= AttackInput;
 	}
 
 	private void MovePerformed(InputAction.CallbackContext context)
 	{
 		MoveInput = context.ReadValue<Vector2>();
-		if(_currentState != Dash)
+		if(_currentState != Dash && _currentState != Attack)
 			TransitionToState(Movement);
 
 		if (MoveInput == Vector2.zero && _currentState != Dash)
@@ -98,6 +107,20 @@ public class TopHatCharacter : MonoBehaviour
 	{
 		yield return new WaitForSeconds(Dash.DashCoolDownTime);
 		_isDashOnCooldown = false;
+	}
+
+	private void AttackInput(InputAction.CallbackContext context)
+	{
+		if(_currentState != Dash && _currentState != Attack)
+		TransitionToState(Attack);
+	}
+
+	private void AttackFinished()
+	{
+		if (MoveInput != Vector2.zero)
+			TransitionToState(Movement);
+		else
+			TransitionToState(Idle);
 	}
 
 	public void TransitionToState(CharacterState characterState)

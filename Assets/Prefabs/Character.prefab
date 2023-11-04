@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5096860523003608734}
   - component: {fileID: 734123623865425131}
   - component: {fileID: 5108716366355164091}
+  - component: {fileID: 3434449372196750862}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -103,6 +104,7 @@ MonoBehaviour:
   <Dash>k__BackingField: {fileID: 5096860523003608734}
   <Movement>k__BackingField: {fileID: 734123623865425131}
   <Idle>k__BackingField: {fileID: 5108716366355164091}
+  <Attack>k__BackingField: {fileID: 3434449372196750862}
 --- !u!114 &5096860523003608734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +143,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ebcd000d5f53804f9370ecf0aa54d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3434449372196750862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503810978201973692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2016ae43fc1a541a458dbc5e6991ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4844034175565970109
