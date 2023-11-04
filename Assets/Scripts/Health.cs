@@ -21,6 +21,12 @@ public class Health : MonoBehaviour
 		Debug.Log($"{transform.gameObject.name} was hit with {amount} Damage");
 
 		_currentHealth -= amount;
+
+		for(int i = 0; i < amount; i++)
+        {
+			GameManager.instance.TopHatCharacter.AdditionalTopHats.RemoveTopHat(GameManager.instance.TopHatCharacter.AdditionalTopHats.GetLastTopHatPosition());
+        }
+
 		if (_currentHealth <= 0)
 			Death();
 	}
@@ -35,4 +41,9 @@ public class Health : MonoBehaviour
 	{
 		_owningActor.OnActorDeath();
 	}
+
+	public int ReturnCurrentHealth()
+    {
+		return _currentHealth;
+    }
 }

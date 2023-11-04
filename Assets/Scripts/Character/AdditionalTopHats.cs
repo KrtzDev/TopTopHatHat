@@ -14,9 +14,12 @@ public class AdditionalTopHats : MonoBehaviour
     [SerializeField, Range(-20f, 0f)] private float _randomZRotationMin;
 
     [SerializeField] List<GameObject> _topHatList;
+    [SerializeField] List<bool> _hasTopHatList;
 
     private void Start()
     {
+        _hasTopHatList = new();
+
         for(int i = 0; i < _topHatList.Count; i++)
         {
             Transform tempTransform = _topHatList[i].GetComponent<Transform>();
@@ -27,14 +30,47 @@ public class AdditionalTopHats : MonoBehaviour
             Quaternion newRotation = Quaternion.Euler(eulerRotation);
             tempTransform.localRotation = newRotation;
 
-            AddTopHat(tempTransform);
+            if(i < GameManager.instance.TopHatCharacter.GetCurrentHealth() - 1)
+            {
+                _hasTopHatList.Add(true);
+                AddTopHat(tempTransform, i);
+            }
+            else
+            {
+                _hasTopHatList.Add(false);
+            }
         }
     }
 
-    private void AddTopHat(Transform parent)
+    public void AddTopHat(Transform parent, int index)
     {
         GameObject _topHat = _topHat_Prefab;
         _topHat.GetComponent<Transform>().localPosition = Vector3.zero;
         Instantiate(_topHat, parent);
+
+        _hasTopHatList[index] = true;
+    }
+
+    public void RemoveTopHat(int index)
+    {
+        if (index < 0)
+            return;
+
+        _hasTopHatList[index] = false;
+        GameObject childObject = _topHatList[index].transform.GetChild(0).gameObject;
+        Destroy(childObject);
+    }
+
+    public int GetLastTopHatPosition()
+    {
+        for (int i = 0; i < _hasTopHatList.Count; i++)
+        {
+            if (!_hasTopHatList[i])
+            {
+                return i - 1;
+            }
+        }
+
+        return _hasTopHatList.Count - 1;
     }
 }
