@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TopHatEnemy : MonoBehaviour
+public class TopHatEnemy : Actor
 {
 	private EnemyState _currentState;
 
@@ -72,5 +72,10 @@ public class TopHatEnemy : MonoBehaviour
 			_health.TakeDamage(damageComponent.DamageAmount);
 
 		}
+	}
+
+	public override void OnActorDeath()
+	{
+		base.OnActorDeath();
 	}
 }

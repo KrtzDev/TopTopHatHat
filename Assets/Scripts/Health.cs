@@ -7,8 +7,12 @@ public class Health : MonoBehaviour
 
 	private int _currentHealth;
 
+	private Actor _owningActor;
+
 	private void Awake()
 	{
+		_owningActor = GetComponent<Actor>();
+
 		_currentHealth = _maxHealth;
 	}
 
@@ -29,7 +33,6 @@ public class Health : MonoBehaviour
 
 	private void Death()
 	{
-		Debug.Log("Died");
-		Destroy(gameObject);
+		_owningActor.OnActorDeath();
 	}
 }
