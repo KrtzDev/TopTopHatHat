@@ -33,7 +33,7 @@ public class AdditionalTopHats : MonoBehaviour
             if(i < GameManager.instance.TopHatCharacter.GetCurrentHealth() - 1)
             {
                 _hasTopHatList.Add(true);
-                AddTopHat(tempTransform, i);
+                AddTopHat(i);
             }
             else
             {
@@ -42,11 +42,11 @@ public class AdditionalTopHats : MonoBehaviour
         }
     }
 
-    public void AddTopHat(Transform parent, int index)
+    public void AddTopHat(int index)
     {
         GameObject _topHat = _topHat_Prefab;
         _topHat.GetComponent<Transform>().localPosition = Vector3.zero;
-        Instantiate(_topHat, parent);
+        Instantiate(_topHat, _topHatList[index].transform);
 
         _hasTopHatList[index] = true;
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -17,4 +18,15 @@ public class GameManager : Singleton<GameManager>
 
 	[field: SerializeField]
 	public TopHatCharacter TopHatCharacter { get; private set; }
+
+	protected void Start()
+	{
+		TopHatCharacter = FindObjectOfType<TopHatCharacter>();
+		SceneLoader.instance.OnSceneLoadCompleted += OnSceneLoaded;
+	}
+
+	private void OnSceneLoaded()
+	{
+		TopHatCharacter = FindObjectOfType<TopHatCharacter>();
+	}
 }
