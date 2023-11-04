@@ -16,6 +16,9 @@ public class CardSelection : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _take;
     [SerializeField] private TextMeshProUGUI _give;
 
+    private TaskAndGiveGenerator.TakeByID _takeTask;
+    private TaskAndGiveGenerator.GiveByID _giveTask;
+
     private void Awake()
     {
         _oldScale = gameObject.GetComponent<RectTransform>().localScale;
@@ -69,11 +72,23 @@ public class CardSelection : MonoBehaviour
 
     public void SetTake(TaskAndGiveGenerator.TakeByID takeTask)
     {
+        _takeTask = takeTask;
         _take.text = takeTask.text;
     }
 
     public void SetGive(TaskAndGiveGenerator.GiveByID giveTask)
     {
+        _giveTask = giveTask;
         _give.text = giveTask.text;
+    }
+
+    public TaskAndGiveGenerator.TakeByID ActiveTakeTask()
+    {
+        return _takeTask;
+    }
+
+    public TaskAndGiveGenerator.GiveByID ActiveGiveTask()
+    {
+        return _giveTask;
     }
 }
