@@ -10,10 +10,11 @@ public class TopHatEnemy : MonoBehaviour
 	private void Awake()
 	{
 		EnemyMoveTowardsPlayer.InitState(this);
+		_currentState = EnemyMoveTowardsPlayer;
 	}
 
 	private void FixedUpdate()
 	{
-		_currentState.OnUpdate();
+		_currentState?.OnUpdate();
 	}
 }
