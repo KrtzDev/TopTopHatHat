@@ -10,6 +10,13 @@ public class Attack : CharacterState
 
 	private TopHatInput _topHatInput;
 
+	[SerializeField]
+	private DamageZone _stabDamageZone;
+	[SerializeField]
+	private DamageZone _slashDamageZone;
+	[SerializeField]
+	private DamageZone _topSlashDamageZone;
+
 	private int _attackCounter = 0;
 	private bool _canAttack;
 	private bool _canIncreaseAttackCounter;
@@ -34,6 +41,7 @@ public class Attack : CharacterState
 		_topHatInput.Character.Attack.performed += Attack_performed;
 
 		_animator.SetTrigger("Attack1");
+		ActivateDamageZone(_stabDamageZone);
 		_attackCounter = 0;
 	}
 
@@ -55,6 +63,7 @@ public class Attack : CharacterState
 		Debug.Log("Exit Attack");
 		_topHatInput.Character.Attack.performed -= Attack_performed;
 		_attackCounter = 0;
+		DeactivateDamageZones();
 	}
 
 	public override void OnUpdate()
@@ -62,9 +71,15 @@ public class Attack : CharacterState
 		if (_attackCounter <= 2 && _attackCounter > 0 && _canAttack)
 		{
 			if (_attackCounter == 1)
+			{
 				_animator.SetTrigger("Attack2");
+				ActivateDamageZone(_slashDamageZone);
+			}
 			if (_attackCounter == 2)
+			{
 				_animator.SetTrigger("Attack3");
+				ActivateDamageZone(_topSlashDamageZone);
+			}
 
 			_canAttack = false;
 		}
@@ -74,6 +89,7 @@ public class Attack : CharacterState
 	{
 		_attackCounter = 0;
 		OnAttackFinished();
+		DeactivateDamageZones();
 	}
 
 	public void CanAttack()
@@ -84,5 +100,19 @@ public class Attack : CharacterState
 	private void CanIncreaseComboCounter()
 	{
 		_canIncreaseAttackCounter = true;
+	}
+
+	private void DeactivateDamageZones()
+	{
+		_stabDamageZone.gameObject.SetActive(false);
+		_slashDamageZone.gameObject.SetActive(false);
+		_topSlashDamageZone.gameObject.SetActive(false);
+	}
+
+	private void ActivateDamageZone(DamageZone damageZone)
+	{
+		DeactivateDamageZones();
+
+		damageZone.gameObject.SetActive(true);
 	}
 }

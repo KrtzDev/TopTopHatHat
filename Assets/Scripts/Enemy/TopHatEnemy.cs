@@ -9,12 +9,15 @@ public class TopHatEnemy : MonoBehaviour
 	[field: SerializeField]
 	public EnemyAttack EnemyAttack { get; private set; }
 
+	private Health _health;
 	private bool _isInAttackRange;
 	private bool _hasAttackCooldown;
 	public bool CanAttack => _isInAttackRange && !_hasAttackCooldown;
 
 	private void Awake()
 	{
+		_health = GetComponent<Health>();
+
 		EnemyMoveTowardsPlayer.InitState(this);
 		EnemyAttack.InitState(this);
 		_currentState = EnemyMoveTowardsPlayer;
@@ -57,5 +60,17 @@ public class TopHatEnemy : MonoBehaviour
 		_currentState.OnExit();
 		_currentState = enemyState;
 		_currentState.OnEnter();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.TryGetComponent(out TopHatEnemy topHatEnemy))
+			return;
+
+		if (other.TryGetComponent(out DamageZone damageComponent))
+		{
+			_health.TakeDamage(damageComponent.DamageAmount);
+
+		}
 	}
 }
