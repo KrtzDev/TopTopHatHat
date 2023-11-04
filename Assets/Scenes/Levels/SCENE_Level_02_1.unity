@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17511088, g: 0.21907213, b: 0.3013723, a: 1}
+  m_IndirectSpecularColor: {r: 0.17511049, g: 0.21907197, b: 0.3013715, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4965,6 +4965,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit Right
       objectReference: {fileID: 0}
+    - target: {fileID: 4889052313881380590, guid: 05d29c188756bd14e9553f79e8e8055b,
+        type: 3}
+      propertyPath: _nextLevel
+      value: SCENE_Level_03_3
+      objectReference: {fileID: 0}
     - target: {fileID: 5631829191106737686, guid: 05d29c188756bd14e9553f79e8e8055b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5562,6 +5567,7 @@ MonoBehaviour:
   <Dash>k__BackingField: {fileID: 1498922424}
   <Movement>k__BackingField: {fileID: 1498922423}
   <Idle>k__BackingField: {fileID: 0}
+  <Attack>k__BackingField: {fileID: 0}
 --- !u!114 &1498922423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5574,7 +5580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977ec5fbeb8603340ae90fd264be893a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 7
+  _currentMoveSpeed: 0
 --- !u!114 &1498922424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6944,6 +6950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Exit Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889052313881380590, guid: 05d29c188756bd14e9553f79e8e8055b,
+        type: 3}
+      propertyPath: _nextLevel
+      value: SCENE_Level_03_1
       objectReference: {fileID: 0}
     - target: {fileID: 5631829191106737686, guid: 05d29c188756bd14e9553f79e8e8055b,
         type: 3}
