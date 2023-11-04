@@ -546,7 +546,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266082153}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: -0.0000000187227, z: 0.0000000044198294, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: 0.0000000187227, z: -0.0000000044198294, w: 0.973249}
   m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1785,6 +1785,7 @@ GameObject:
   - component: {fileID: 1372666856}
   - component: {fileID: 1372666855}
   - component: {fileID: 1372666854}
+  - component: {fileID: 1372666858}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1879,6 +1880,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1372666858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372666853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdd4ef9b6b737a49af5abe45a7f0d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cards:
+  - {fileID: 1942960497}
+  - {fileID: 1928438923}
+  - {fileID: 1144842124}
+  - {fileID: 604661098}
+  - {fileID: 694912716}
 --- !u!1 &1387860445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,39 +2306,13 @@ MonoBehaviour:
   _confirmNotification: {fileID: 132594057}
   _fadeRate: 1
   _waitTimeForFadeOut: 3
---- !u!1 &1570080647
+--- !u!1 &1570080647 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8124143382312832954, guid: 31bfde02b2075f944947484cf3c36aa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2033938926}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1570080648}
-  - component: {fileID: 1570080649}
-  m_Layer: 0
-  m_Name: NameGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1570080648
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570080647}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1570080649
+--- !u!114 &1570080650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2328,47 +2321,99 @@ MonoBehaviour:
   m_GameObject: {fileID: 1570080647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3c1382d7ce1ad46a86f534dfdd2618, type: 3}
+  m_Script: {fileID: 11500000, guid: b692a8f4c9dffd1469b46c0e1c7aaf35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponIconsByNames:
-  - name: Leather Helmet
-    icon: {fileID: 1771446180, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: Kabuto
-    icon: {fileID: 510289901, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: Valkyrie Helm
-    icon: {fileID: 450093703, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: Barbarian Helmet
-    icon: {fileID: 612940663, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: LK's Helmet
-    icon: {fileID: -1819324105, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: Hellebarde
-    icon: {fileID: 1912453416, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: Giant Axe
-    icon: {fileID: 494406316, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: Great Shield
-    icon: {fileID: -1119638910, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: Hell Sword
-    icon: {fileID: -963042467, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  - name: Silver Sword
-    icon: {fileID: 1856826321, guid: 91ece539279118a438c900dfb08582ed, type: 3}
-  _weaponDescriptions:
-  - Swordiness
-  - Craziness
-  - Mightiness
-  - Love
-  - Heaven
-  - Hades
-  - Strength
-  - War
-  - Peace
-  - Zagreus
-  - The Old Age
-  - Time
-  - Wisdom
-  - Sorcery
-  - Loch Ness
-  - Ideas
+  _takeByIDs:
+  - text: The first time you kill an enemy each stage, you gain a top hat.
+    id: 0
+  - text: At the beginning of each stage you gain a top hat.
+    id: 1
+  - text: At the end of each stage you gain a top hat.
+    id: 2
+  - text: The first time you only have 1 top hat left, you gain two top hats.
+    id: 3
+  - text: The first damage you receive each stage is mitigated.
+    id: 4
+  - text: You cannot get damaged for 2 seconds after getting damaged.
+    id: 5
+  - text: You cannot get damaged for 2 sconds after killing an enemy.
+    id: 6
+  - text: You cannot get damaged for the first 5 seconds of each stage.
+    id: 7
+  - text: Your movement speed is increased.
+    id: 8
+  - text: Your dash distance is increased.
+    id: 9
+  - text: Your dash cooldown is decreased.
+    id: 10
+  - text: The enemy movement speed is decreased.
+    id: 11
+  - text: Each stage, you kill the first non-boss enemy you strike instantly.
+    id: 12
+  - text: Each stage, you kill the second non-boss enemy you strike instantly.
+    id: 13
+  - text: Each stage, you kill the fifth non-boss enemy you strike instantly.
+    id: 14
+  - text: Each stage, you kill t he tenth non-boss enemy you strike instantly.
+    id: 15
+  - text: After you dash you take no damage for 0.5 seconds.
+    id: 16
+  - text: After you dash you deal double damage for 1.5 seconds.
+    id: 17
+  - text: After you dash 10 times in a stage (each stage) you get a top hat.
+    id: 18
+  - text: After you dash your movement speed is increased.
+    id: 19
+  _giveByIDs:
+  - text: Enemies movement speed is slightly increased.
+    id: 0
+  - text: Enemies movement speed is slightly increased.
+    id: 1
+  - text: Enemies movement speed is heavily increased.
+    id: 2
+  - text: Enemies need an additional hit to be slain.
+    id: 3
+  - text: The first hit an enemy receives deals no damage.
+    id: 4
+  - text: For the first 5 seconds of each stage enemies do not take damage.
+    id: 5
+  - text: After an enemy is killed other enemies do not take damage for 2 seconds.
+    id: 6
+  - text: Each stage, spawn an additional enemy.
+    id: 7
+  - text: Each stage, spawn an additional enemy.
+    id: 8
+  - text: Each stage, spawn an additional enemy.
+    id: 9
+  - text: Each stage, spawn an additional enemy.
+    id: 10
+  - text: Each stage, spawn two additional enemies.
+    id: 11
+  - text: Each stage, spawn two additional enemies.
+    id: 12
+  - text: Each stage, spawn two additional enemies.
+    id: 13
+  - text: Each stage, spawn three additional enemies.
+    id: 14
+  - text: Each stage, spawn three additional enemies.
+    id: 15
+  - text: Each stage, spawn five additional enemies.
+    id: 16
+  - text: The first enemy that hits you each stage deals double damage.
+    id: 17
+  - text: If you have more than 5 top hats enemies deal double damage.
+    id: 18
+  - text: You deal no damage for the first 5 seconds of eachs tage.
+    id: 19
+  - text: You deal halve damage for 2 seconds after having dashed.
+    id: 20
+  - text: You deal havel damage for 2 seconds after slaying an enemy.
+    id: 21
+  - text: You cannot move for 1 second after slaying an enemy.
+    id: 22
+  - text: For the first 3 seconds of each stage you cannot move.
+    id: 23
 --- !u!1 &1763696761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,7 +2478,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763696761}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: -0.0000000187227, z: 0.0000000044198294, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: 0.0000000187227, z: -0.0000000044198294, w: 0.973249}
   m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2888,6 +2933,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995331424}
   m_CullTransparentMesh: 1
+--- !u!1001 &2033938926
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1755983657318073636, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755983657318073636, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755983657318073636, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598437376180395022, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_Name
+      value: Bootstrapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560102374446812871, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: <TopHatCharacter>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8124143382312832954, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_Name
+      value: NameTaskGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8124143382312832954, guid: 31bfde02b2075f944947484cf3c36aa0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1570080650}
+  m_SourcePrefab: {fileID: 100100000, guid: 31bfde02b2075f944947484cf3c36aa0, type: 3}
 --- !u!1001 &604911794385379236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3324,4 +3466,4 @@ SceneRoots:
   - {fileID: 604911794385379236}
   - {fileID: 124774730}
   - {fileID: 1372666857}
-  - {fileID: 1570080648}
+  - {fileID: 2033938926}

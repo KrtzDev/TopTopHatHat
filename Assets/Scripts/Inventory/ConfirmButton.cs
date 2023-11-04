@@ -18,6 +18,7 @@ public class ConfirmButton : MonoBehaviour
         if(_boolCounter == 2)
         {
             // activate effects
+            // put not-used takes and gives back to their lists
 
             // go to next level
 
