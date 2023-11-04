@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : Singleton<SceneLoader>
 {
 	public event Action OnSceneLoadCompleted;
+	public string currentScene;
 
 	public void LoadScene(string sceneName)
 	{
 		SceneManager.LoadSceneAsync(sceneName).completed += SceneLoadCompleted;
+		currentScene = sceneName;
 	}
 
 	private void SceneLoadCompleted(AsyncOperation operation)

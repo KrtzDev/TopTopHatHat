@@ -21,6 +21,9 @@ public class AbilityManager : Singleton<AbilityManager>
 
 	private void OnSceneLoaded()
 	{
+		if (SceneLoader.instance.currentScene == "SCENE_Level_01")
+			return;
+
 		SetupTakeAndGiveLists();
 	}
 
