@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TakeAbilities : Singleton<TakeAbilities>
 {
+    public bool moveSpeedOnDash = false;
+
     public void Ability0() // the first time you kill an enemy each stage you gain a top hat
     {
 
@@ -46,17 +48,17 @@ public class TakeAbilities : Singleton<TakeAbilities>
 
     public void Ability8() // your movement speed is increased
     {
-
+        GameManager.instance.TopHatCharacter.Movement.IncreaseMoveSpeed(1);
     }
 
     public void Ability9() // your dash distance is increased
     {
-
+        GameManager.instance.TopHatCharacter.Dash.IncreaseDashDistance(10f);
     }
 
     public void Ability10() // your dash coldown is decreased
     {
-
+        GameManager.instance.TopHatCharacter.Dash.DecreaseDashCooldown(0.5f);
     }
 
     public void Ability11() // the enemy movement speed is decreased
@@ -101,6 +103,6 @@ public class TakeAbilities : Singleton<TakeAbilities>
 
     public void Ability19() // after you dash your movement speed is increased
     {
-
+        moveSpeedOnDash = true;
     }
 }

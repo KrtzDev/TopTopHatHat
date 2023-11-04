@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Dash : CharacterState
@@ -43,6 +44,12 @@ public class Dash : CharacterState
 		_rigidbody.velocity = Vector3.zero;
 
 		_animator.SetBool("IsDashing", false);
+
+		if(TakeAbilities.instance.moveSpeedOnDash)
+        {
+			FindObjectOfType<TopHatCharacter>().Movement.IncreaseMoveSpeed(1);
+			StartCoroutine(ResetMoveSpeedAfterTime(1.5f));
+        }
 	}
 
 	public override void OnUpdate()
@@ -54,4 +61,21 @@ public class Dash : CharacterState
 			OnDashFinished();
 		}
 	}
+
+	private IEnumerator ResetMoveSpeedAfterTime(float time)
+    {
+		yield return new WaitForSeconds(time);
+
+		FindObjectOfType<TopHatCharacter>().Movement.DecreaseMoveSpeed(1);
+	}
+
+	public void DecreaseDashCooldown(float value)
+    {
+		DashCoolDownTime -= value;
+    }
+
+	public void IncreaseDashDistance(float value)
+    {
+		_dashForce += value;
+    }
 }

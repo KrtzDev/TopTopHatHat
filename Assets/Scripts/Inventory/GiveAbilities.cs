@@ -116,11 +116,19 @@ public class GiveAbilities : Singleton<GiveAbilities>
 
     public void Ability22() // you cannot move for 1 second after slaying an enemy
     {
-
+        
     }
 
     public void Ability23() // for the first 3 seconds of each stage you cannot move
     {
+        GameManager.instance.TopHatCharacter.Movement.SetMoveSpeed0();
+        ResetMoveSpeedAfterTime(GameManager.instance.TopHatCharacter, 3f);
+    }
 
+    private IEnumerator ResetMoveSpeedAfterTime(TopHatCharacter player, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        player.Movement.ResetMoveSpeed();
     }
 }
