@@ -5,6 +5,8 @@ using UnityEngine.AI;
 public class EnemyAttack : EnemyState
 {
 	public event Action OnAttackFinished;
+	public string _sfxNameAttack;
+
 
 	[field: SerializeField]
 	public float AttackCooldown {  get; private set; }
@@ -74,6 +76,7 @@ public class EnemyAttack : EnemyState
 	{
 		_slimeAttackDamageZone.gameObject.SetActive(true);
 		_slimeAttackParticles.Play(true);
+		SFXManager.instance.PlaySound(_sfxNameAttack);
 	}
 
 	private void DeactivateDamageZone()

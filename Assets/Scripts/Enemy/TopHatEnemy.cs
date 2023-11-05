@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TopHatEnemy : Actor
 {
-	public string _sfxNameAttack;
 	public string _sfxNameGetHit;
 	public string _sfxNameDeath;
 
@@ -55,7 +54,6 @@ public class TopHatEnemy : Actor
 
 		if(CanAttack)
         {
-			SFXManager.instance.PlaySound(_sfxNameAttack);
 			TransitionToState(EnemyAttack);
 		}
 	}

@@ -87,9 +87,9 @@ MonoBehaviour:
     volume: 1
     pitch: 1
   - name: SlimeDeath
-    audioClip: {fileID: 8300000, guid: 7fb31dd0d9de05942a917a85d58c88d0, type: 3}
-    volume: 1
-    pitch: 1
+    audioClip: {fileID: 8300000, guid: 2be00ebf8df9c7040935e6c99952017e, type: 3}
+    volume: 0.5
+    pitch: 0.8
   - name: BatDeath
     audioClip: {fileID: 8300000, guid: 2be00ebf8df9c7040935e6c99952017e, type: 3}
     volume: 1
@@ -100,15 +100,15 @@ MonoBehaviour:
     pitch: 1
   - name: SlimeAttack
     audioClip: {fileID: 8300000, guid: 491f966df54976e46bef44e41d1587d2, type: 3}
-    volume: 1
+    volume: 0.75
     pitch: 1
   - name: BatAttack
     audioClip: {fileID: 8300000, guid: 0c8b23890ac68674dba4af915091c08e, type: 3}
-    volume: 1
+    volume: 0.75
     pitch: 1
   - name: PigAttack
     audioClip: {fileID: 8300000, guid: 94a45b9f1a0823544b2d432841ae2ac2, type: 3}
-    volume: 1
+    volume: 0.75
     pitch: 1
   - name: DoorUnlock
     audioClip: {fileID: 8300000, guid: f6d0b96180d2f8b4e9584ba50c7ff3af, type: 3}

@@ -5056,6 +5056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35328e56990dac4ca3656e30338a2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfxNameGetHit: SlimeGetHit
+  _sfxNameDeath: SlimeDeath
   <EnemyMoveTowardsPlayer>k__BackingField: {fileID: 2355426418986853445}
   <EnemyAttack>k__BackingField: {fileID: 7414312272633630068}
 --- !u!114 &2355426418986853445
@@ -5082,6 +5084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc71832eb351ec45a0c9dc0bc4003df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfxNameAttack: SlimeAttack
   <AttackCooldown>k__BackingField: 2
   <AttackRange>k__BackingField: 2
   _slimeAttackDamageZone: {fileID: 2809353821652413700}
