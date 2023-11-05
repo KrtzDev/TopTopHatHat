@@ -53,6 +53,8 @@ public class ConfirmButton : MonoBehaviour
 
             Debug.Log("Confirm Selection");
 
+            SFXManager.instance.PlaySound("ConfirmButton");
+
             DisableNotification();
 
 			SceneLoader.instance.LoadScene(SceneLoader.instance.SceneToLoad);

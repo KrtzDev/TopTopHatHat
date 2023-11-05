@@ -8,6 +8,7 @@ public class ButtonIndicator : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void OnSelect(BaseEventData eventData)
     {
         _buttonSelector.SetActive(true);
+        SFXManager.instance.PlaySound("ButtonSelect");
     }
 
     public void OnDeselect(BaseEventData eventData)

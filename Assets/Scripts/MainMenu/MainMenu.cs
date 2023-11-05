@@ -53,4 +53,9 @@ public class MainMenu : MonoBehaviour
         _controlsMenu.SetActive(false);
         _mainMenuButtons.SetActive(true);
     }
+
+    public void ConfirmButtonSound()
+    {
+        SFXManager.instance.PlaySound("ButtonConfirm");
+    }
 }

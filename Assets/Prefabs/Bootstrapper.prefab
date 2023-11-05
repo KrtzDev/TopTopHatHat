@@ -1,5 +1,144 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1193471926113680624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5597776254013381209}
+  - component: {fileID: 5674216855819247420}
+  m_Layer: 0
+  m_Name: SFX-Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5597776254013381209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193471926113680624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2306398633558567490}
+  m_Father: {fileID: 8166703299903933824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5674216855819247420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193471926113680624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beaba492e903a36408d6e9c4788a2400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxSounds:
+  - name: PlayerGetHit
+    audioClip: {fileID: 8300000, guid: e44074a54de21804fa16afa5cbfc95fd, type: 3}
+    volume: 1
+    pitch: 1.2
+  - name: PlayerDeath
+    audioClip: {fileID: 8300000, guid: 0a130e94949b177499c30e763cf06833, type: 3}
+    volume: 1
+    pitch: 1.05
+  - name: PlayerAttack1
+    audioClip: {fileID: 8300000, guid: a63bdcf045468064f8b8c65941f9873e, type: 3}
+    volume: 1
+    pitch: 1
+  - name: PlayerAttack2
+    audioClip: {fileID: 8300000, guid: 0db8e426a7ad41449a7bc68e5f658d8f, type: 3}
+    volume: 1
+    pitch: 1
+  - name: PlayerAttack3
+    audioClip: {fileID: 8300000, guid: 2f2a174af95cfa94d83c72c645a0fdc2, type: 3}
+    volume: 1
+    pitch: 1
+  - name: PlayerAttackExtra
+    audioClip: {fileID: 8300000, guid: 324b77e8a93b0e84d970e1db61e62c17, type: 3}
+    volume: 1
+    pitch: 1
+  - name: NewTopHat
+    audioClip: {fileID: 8300000, guid: 2eedb42b2031f6649a9ac3a3a7663494, type: 3}
+    volume: 1
+    pitch: 1.2
+  - name: SlimeGetHit
+    audioClip: {fileID: 8300000, guid: a5db71ea97079c24d8d05c1e5e83a9e0, type: 3}
+    volume: 1
+    pitch: 1
+  - name: BatGetHit
+    audioClip: {fileID: 8300000, guid: 6404b95ac2e2cd846983307ea07c77c6, type: 3}
+    volume: 1
+    pitch: 1
+  - name: PigGetHit
+    audioClip: {fileID: 8300000, guid: 73d836f0e3ae56240a6e10bf6ea156a3, type: 3}
+    volume: 1
+    pitch: 1
+  - name: SlimeDeath
+    audioClip: {fileID: 8300000, guid: 7fb31dd0d9de05942a917a85d58c88d0, type: 3}
+    volume: 1
+    pitch: 1
+  - name: BatDeath
+    audioClip: {fileID: 8300000, guid: 2be00ebf8df9c7040935e6c99952017e, type: 3}
+    volume: 1
+    pitch: 1
+  - name: PigDeath
+    audioClip: {fileID: 8300000, guid: bdfebc33739437b468ec979a136a47a3, type: 3}
+    volume: 1
+    pitch: 1
+  - name: SlimeAttack
+    audioClip: {fileID: 8300000, guid: 491f966df54976e46bef44e41d1587d2, type: 3}
+    volume: 1
+    pitch: 1
+  - name: BatAttack
+    audioClip: {fileID: 8300000, guid: 0c8b23890ac68674dba4af915091c08e, type: 3}
+    volume: 1
+    pitch: 1
+  - name: PigAttack
+    audioClip: {fileID: 8300000, guid: 94a45b9f1a0823544b2d432841ae2ac2, type: 3}
+    volume: 1
+    pitch: 1
+  - name: DoorUnlock
+    audioClip: {fileID: 8300000, guid: f6d0b96180d2f8b4e9584ba50c7ff3af, type: 3}
+    volume: 1
+    pitch: 1
+  - name: ConfirmButton
+    audioClip: {fileID: 8300000, guid: d29a4274c06bb5042a9ec46a70743c89, type: 3}
+    volume: 1
+    pitch: 1
+  - name: SelectCard
+    audioClip: {fileID: 8300000, guid: 37f2539bd33d1044aaf3528acf2a95ca, type: 3}
+    volume: 1
+    pitch: 1
+  - name: UnselectCard
+    audioClip: {fileID: 8300000, guid: 0d371e8c167c27f4da2b5446335d9581, type: 3}
+    volume: 1
+    pitch: 1
+  - name: ButtonConfirm
+    audioClip: {fileID: 8300000, guid: b10c18c409de10f42a67f904d695049e, type: 3}
+    volume: 1
+    pitch: 1
+  - name: ButtonSelect
+    audioClip: {fileID: 8300000, guid: 159c096e41d6a6a499a7b4f0aa14dc13, type: 3}
+    volume: 1
+    pitch: 1
+  - name: PlayerDash
+    audioClip: {fileID: 8300000, guid: 08306e871f0cbbe42afe491cfd8fa648, type: 3}
+    volume: 1
+    pitch: 1
+  sfxSource: {fileID: 3084289163101957379}
 --- !u!1 &1282797741462426468
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +231,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c9acbab0b249b0c4a9f2ee123adc6df6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -262,6 +401,134 @@ MonoBehaviour:
   _killedEnemies: 0
   _dashes: 0
   playerHP: 10
+--- !u!1 &4237907909595860089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2306398633558567490}
+  - component: {fileID: 3084289163101957379}
+  m_Layer: 0
+  m_Name: SFX_Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2306398633558567490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237907909595860089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5597776254013381209}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &3084289163101957379
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237907909595860089}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5116899147435952761
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +613,7 @@ Transform:
   - {fileID: 5428040141840119147}
   - {fileID: 1310562513006625376}
   - {fileID: 6272583312688791325}
+  - {fileID: 5597776254013381209}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6134840925982482691
