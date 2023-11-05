@@ -21,7 +21,7 @@ public class AbilityManager : Singleton<AbilityManager>
 
 	private void OnSceneLoaded()
 	{
-		if (SceneLoader.instance.currentScene == "SCENE_Level_01" || SceneLoader.instance.currentScene == "SCENE_Main_Menu")
+		if (SceneLoader.instance.currentScene == "SCENE_Main_Menu")
 			return;
 
 		SetupTakeAndGiveLists();
@@ -35,30 +35,51 @@ public class AbilityManager : Singleton<AbilityManager>
 		_takeTaskBoolList = new();
 		_giveTaskBoolList = new();
 
-		for (int i = 0; i < _takeByIDs.Count; i++)
+		for (int i = 0; i < 20; i++)
 		{
+
 			_takeTaskBoolList.Add(false);
 		}
 
-		for (int i = 0; i < _giveByIDs.Count; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			_giveTaskBoolList.Add(false);
 		}
 
-		for (int i = 0; i < _takeByIDs.Count; i++)
+		//for (int i = 0; i < 20; i++)
+		//{
+		//	if (ListContainsIndex(_takeIDs, _takeByIDs[i].id))
+		//		_takeTaskBoolList[_takeByIDs[i].id] = true;
+		//}
+
+		for (int i = 0; i < _takeTaskBoolList.Count; i++)
 		{
-			if (ListContainsIndex(_takeIDs, _takeByIDs[i].id))
-				_takeTaskBoolList[_takeByIDs[i].id] = true;
+			for (int j = 0; j < _takeByIDs.Count; j++)
+			{
+				if (i == _takeByIDs[j].id)
+					_takeTaskBoolList[i] = true;
+			}
 		}
 
-		for (int i = 0; i < _giveByIDs.Count; i++)
+		//for (int i = 0; i < 24; i++)
+		//{
+		//	if (ListContainsIndex(_giveIDs, _giveByIDs[i].id))
+		//		_giveTaskBoolList[_giveByIDs[i].id] = true;
+		//}
+
+		for (int i = 0; i < _giveTaskBoolList.Count; i++)
 		{
-			if (ListContainsIndex(_giveIDs, _giveByIDs[i].id))
-				_giveTaskBoolList[_giveByIDs[i].id] = true;
+			for (int j = 0; j < _giveByIDs.Count; j++)
+			{
+				if (i == _giveByIDs[j].id)
+					_giveTaskBoolList[i] = true;
+			}
 		}
 
-		ActivateTakeAbilities();
-		ActivateGiveAbilities();
+		if (_takeByIDs.Count > 0)
+			ActivateTakeAbilities();
+		if (_giveByIDs.Count > 0)
+			ActivateGiveAbilities();
 	}
 
 	public void ActivateTakeAbilities()

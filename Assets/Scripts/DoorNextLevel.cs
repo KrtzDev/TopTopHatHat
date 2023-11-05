@@ -28,8 +28,8 @@ public class DoorNextLevel : MonoBehaviour
     {
         if(other.GetComponent<TopHatCharacter>() != null)
         {
+			SceneLoader.instance.SceneToLoad = _nextLevel;
 			GameManager.instance.OpenGiveAndTakeUI();
-            //SceneLoader.instance.LoadScene(_nextLevel);
         }
     }
 }

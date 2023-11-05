@@ -1894,32 +1894,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1755983657318073636, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1755983657318073636, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1755983657318073636, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6598437376180395022, guid: 31bfde02b2075f944947484cf3c36aa0,
         type: 3}
       propertyPath: m_Name
       value: Bootstrapper
       objectReference: {fileID: 0}
-    - target: {fileID: 7560102374446812871, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: _giveAndTakeSelectionUI
-      value: 
-      objectReference: {fileID: 2016228752022559008, guid: eac6d46dad31e08448ade6ab9959afb6,
-        type: 3}
     - target: {fileID: 8166703299903933824, guid: 31bfde02b2075f944947484cf3c36aa0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2300,6 +2279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129921790225737702, guid: 6673ae12c75dc544e893db0bc9dc3f98,
+        type: 3}
+      propertyPath: _enemiesToSpawn.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5640017339154999244, guid: 6673ae12c75dc544e893db0bc9dc3f98,
         type: 3}

@@ -40,8 +40,8 @@ public class GameManager : Singleton<GameManager>
 	{
         if (SceneManager.GetActiveScene().name.Contains("Level") || SceneManager.GetActiveScene().name.Contains("Test"))
 		{
-			TopHatCharacter = FindObjectOfType<TopHatCharacter>();
         }
+			TopHatCharacter = FindObjectOfType<TopHatCharacter>();
 
 	}
 

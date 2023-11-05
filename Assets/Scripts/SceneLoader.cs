@@ -7,6 +7,8 @@ public class SceneLoader : Singleton<SceneLoader>
 	public event Action OnSceneLoadCompleted;
 	public string currentScene;
 
+	public string SceneToLoad { get; set; }
+
 	public void LoadScene(string sceneName)
 	{
 		SceneManager.LoadSceneAsync(sceneName).completed += SceneLoadCompleted;
