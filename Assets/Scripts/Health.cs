@@ -60,12 +60,89 @@ public class Health : MonoBehaviour
 					amount *= 2;
                 }
             }
+
+            if (TakeAbilities.instance.gain1TopHatsOn1HP)
+            {
+				if(_currentHealth - amount <= 1)
+                {
+					if(TakeAbilities.instance.mitigateFirstDamage && !StatsTracker.instance._playerHasMitigatedFirstDamage)
+                    {
+						StatsTracker.instance._playerHasMitigatedFirstDamage = true;
+						return;
+                    }
+					else
+                    {
+						Heal(1);
+                    }
+
+                }
+            }
+		}
+
+		if (gameObject.GetComponent<TopHatEnemy>() != null)
+		{
+			if (TakeAbilities.instance.killFirstEnemyEachStage)
+			{
+				if(StatsTracker.instance._killedEnemies == 0)
+                {
+					amount = 100;
+                }
+			}
+
+			if (TakeAbilities.instance.killSecondEnemyEachStage)
+			{
+				if (StatsTracker.instance._killedEnemies == 1)
+				{
+					amount = 100;
+				}
+			}
+
+			if (TakeAbilities.instance.killFifthEnemyEachStage)
+			{
+				if (StatsTracker.instance._killedEnemies == 4)
+				{
+					amount = 100;
+				}
+			}
+
+			if (TakeAbilities.instance.killTenthEnemyEachStage)
+			{
+				if (StatsTracker.instance._killedEnemies == 9)
+				{
+					amount = 100;
+				}
+			}
+
+			if(TakeAbilities.instance.dealDoubleDamageOnNextAttack)
+            {
+				if(StatsTracker.instance._playerDealDoubleDamage)
+                {
+					amount *= 2;
+					StatsTracker.instance._playerDealDoubleDamage = false;
+                }
+            }
 		}
 
 		_currentHealth -= amount;
 		_firstDamageReceived = true;
 
-		for(int i = 0; i < amount; i++)
+		if (gameObject.GetComponent<TopHatCharacter>() != null)
+        {
+			if(TakeAbilities.instance.takeNoDamageFor2AfterGettingDamaged)
+            {
+				TakeNoDamageForTime(2);
+            }
+        }
+
+		if(gameObject.GetComponent<TopHatEnemy>() != null)
+        {
+			if(TakeAbilities.instance.takeNoDamageFor0_5AfterAttackingAnEnemy)
+            {
+				GameManager.instance.TopHatCharacter.GetComponent<Health>().TakeNoDamageForTime(0.5f);
+            }
+		}
+
+		for (int i = 0; i < amount; i++)
         {
 			if(gameObject.GetComponent<TopHatCharacter>() != null)
             {
@@ -100,12 +177,26 @@ public class Health : MonoBehaviour
 	{
 		if (gameObject.GetComponent<TopHatEnemy>() != null)
         {
-			if(GiveAbilities.instance.noDamageFor2AfterEnemyDeath)
+			StatsTracker.instance._killedEnemies++;
+
+			if (!StatsTracker.instance._playerHasFirstKill)
+			{
+				// stuff on first enemy kill each stage
+
+				if(TakeAbilities.instance.gainTopHatOnFirstKill)
+                {
+					GameManager.instance.TopHatCharacter.GetComponent<Health>().Heal(1);
+                }
+
+				StatsTracker.instance._playerHasFirstKill = true;
+			}
+
+			if (GiveAbilities.instance.noDamageFor2AfterEnemyDeath)
             {
 				EnemySpawner spawner = FindAnyObjectByType<EnemySpawner>();
 				for(int i = 0; i < spawner._enemyParent.childCount; i++)
                 {
-					spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().GetNoDamageForTime(2);
+					spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().TakeNoDamageForTime(2);
                 }
             }
 
@@ -114,7 +205,7 @@ public class Health : MonoBehaviour
 				EnemySpawner spawner = FindAnyObjectByType<EnemySpawner>();
 				for (int i = 0; i < spawner._enemyParent.childCount; i++)
 				{
-					spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().GetNoDamageForTime(1);
+					spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().TakeNoDamageForTime(1);
 				}
 			}
 
@@ -123,6 +214,12 @@ public class Health : MonoBehaviour
 				GameManager.instance.TopHatCharacter.Movement.SetMoveSpeed0();
                 StartCoroutine(ResetMoveSpeedAfterTimePlayer(GameManager.instance.TopHatCharacter, 0.5f));
             }
+
+			if(TakeAbilities.instance.takeNoDamageFor2AfterKillingAnEnemy)
+            {
+				GameManager.instance.TopHatCharacter.GetComponent<Health>().TakeNoDamageForTime(2);
+
+			}
         }
 
 		_owningActor.OnActorDeath();
@@ -140,7 +237,7 @@ public class Health : MonoBehaviour
 			_currentHealth = _maxHealth;
 	}
 
-	public void GetNoDamageForTime(float time)
+	public void TakeNoDamageForTime(float time)
     {
 		if(_noDamageTimer <= 0)
         {

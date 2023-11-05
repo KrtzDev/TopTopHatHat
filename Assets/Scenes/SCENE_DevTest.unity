@@ -1571,54 +1571,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 273946368741685190, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: enemyList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 273946368741685190, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: enemyList.Array.data[0]
-      value: 
-      objectReference: {fileID: 792778081766950990, guid: 5a68e53d714bfe84caeb2d9ba42a88e5,
-        type: 3}
-    - target: {fileID: 273946368741685190, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: enemyList.Array.data[1]
-      value: 
-      objectReference: {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b,
-        type: 3}
-    - target: {fileID: 273946368741685190, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: enemyList.Array.data[2]
-      value: 
-      objectReference: {fileID: 7452747485201204951, guid: 5aedfbfa3dcf32644a1045bb795b4933,
-        type: 3}
-    - target: {fileID: 1766615278846342629, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: _giveByIDs.Array.data[4].text
-      value: Enemies need an additional hit to be slain.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1766615278846342629, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: _giveByIDs.Array.data[20].text
-      value: You deal no damage for 1 seconds after having dashed.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1766615278846342629, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: _giveByIDs.Array.data[21].text
-      value: You deal no damage for 1 seconds after slaying an enemy.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1766615278846342629, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: _giveByIDs.Array.data[22].text
-      value: You cannot move for 0.5 seconds after slaying an enemy.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1766615278846342629, guid: 31bfde02b2075f944947484cf3c36aa0,
-        type: 3}
-      propertyPath: _giveByIDs.Array.data[23].text
-      value: For the first 2.5 seconds of each stage you cannot move.
-      objectReference: {fileID: 0}
     - target: {fileID: 6598437376180395022, guid: 31bfde02b2075f944947484cf3c36aa0,
         type: 3}
       propertyPath: m_Name

@@ -55,6 +55,11 @@ public class EnemySpawner : MonoBehaviour
 				enemy.GetComponent<NavMeshAgent>().speed += 1.5f;
 			}
 
+			if(TakeAbilities.instance.decreaseEnemyMovementspeed)
+            {
+				enemy.GetComponent<NavMeshAgent>().speed *= 0.675f;
+            }
+
 			if(GiveAbilities.instance.extraHat1)
             {
 				enemy.GetComponent<Health>().IncreaseMaxHealth(1, true);
@@ -67,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
 
 			if(GiveAbilities.instance.noDamageFor5)
             {
-				enemy.GetComponent<Health>().GetNoDamageForTime(5);
+				enemy.GetComponent<Health>().TakeNoDamageForTime(5);
             }
 
 			Instantiate(enemy, _spawnPositions[i].position, Quaternion.identity, _enemyParent);

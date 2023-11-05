@@ -252,6 +252,11 @@ MonoBehaviour:
   - {fileID: 792778081766950990, guid: 5a68e53d714bfe84caeb2d9ba42a88e5, type: 3}
   - {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b, type: 3}
   - {fileID: 7452747485201204951, guid: 5aedfbfa3dcf32644a1045bb795b4933, type: 3}
+  _playerHasFirstKill: 0
+  _playerHasMitigatedFirstDamage: 0
+  _playerDealDoubleDamage: 0
+  _killedEnemies: 0
+  _dashes: 0
 --- !u!1 &5116899147435952761
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +415,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd856f8d8f153a4984d58002b605b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gainTopHatOnFirstKill: 0
+  gainTopHatOnStage1: 0
+  gainTopHatOnStage2: 0
+  gain1TopHatsOn1HP: 0
+  mitigateFirstDamage: 0
+  takeNoDamageFor2AfterGettingDamaged: 0
+  takeNoDamageFor2AfterKillingAnEnemy: 0
+  takeNoDamageFor0_5AfterAttackingAnEnemy: 0
+  decreaseEnemyMovementspeed: 0
+  killFirstEnemyEachStage: 0
+  killSecondEnemyEachStage: 0
+  killFifthEnemyEachStage: 0
+  killTenthEnemyEachStage: 0
+  takeNoDamageFor0_5AfterDash: 0
+  dealDoubleDamageOnNextAttack: 0
+  gainTopHatOn10Dashes: 0
   moveSpeedOnDash: 0
 --- !u!114 &2232532989362299749
 MonoBehaviour:
@@ -430,6 +451,11 @@ MonoBehaviour:
   extraHat2: 0
   noDamageFor5: 0
   noDamageFor2AfterEnemyDeath: 0
+  firstHitDealsDoubleDamage: 0
+  receiveDoubleDamageAt7HP: 0
+  noDamageFor0_5AfterAttacking: 0
+  noDamageFor1AfterPlayDash: 0
+  noDamageFor1AfterEnemyDeath: 0
   noMoveFor0_5AfterEnemyDeath: 0
 --- !u!1001 &97550125485777073
 PrefabInstance:
@@ -489,6 +515,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3079833985682823819, guid: b4df4ca394e9fd041abd16efd7d095ee,
+        type: 3}
+      propertyPath: _weaponDescriptions.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3079833985682823819, guid: b4df4ca394e9fd041abd16efd7d095ee,
+        type: 3}
+      propertyPath: _weaponDescriptions.Array.data[16]
+      value: Spearness
+      objectReference: {fileID: 0}
+    - target: {fileID: 3079833985682823819, guid: b4df4ca394e9fd041abd16efd7d095ee,
+        type: 3}
+      propertyPath: _weaponDescriptions.Array.data[17]
+      value: Shieldness
+      objectReference: {fileID: 0}
+    - target: {fileID: 3079833985682823819, guid: b4df4ca394e9fd041abd16efd7d095ee,
+        type: 3}
+      propertyPath: _weaponDescriptions.Array.data[18]
+      value: Axeness
+      objectReference: {fileID: 0}
+    - target: {fileID: 3079833985682823819, guid: b4df4ca394e9fd041abd16efd7d095ee,
+        type: 3}
+      propertyPath: _weaponDescriptions.Array.data[19]
+      value: Helmetness
+      objectReference: {fileID: 0}
     - target: {fileID: 8206772443483156235, guid: b4df4ca394e9fd041abd16efd7d095ee,
         type: 3}
       propertyPath: m_Name
@@ -532,17 +583,17 @@ MonoBehaviour:
     id: 0
   - text: At the beginning of each stage you gain a top hat.
     id: 1
-  - text: At the end of each stage you gain a top hat.
+  - text: At the beginning of each stage you gain a top hat.
     id: 2
-  - text: The first time you only have 1 top hat left, you gain two top hats.
+  - text: each stage, the first time you only have 1 top hat left you gain another
     id: 3
   - text: The first damage you receive each stage is mitigated.
     id: 4
-  - text: You cannot get damaged for 2 seconds after getting damaged.
+  - text: You cannot take damage for 2 seconds after taking damage.
     id: 5
-  - text: You cannot get damaged for 2 sconds after killing an enemy.
+  - text: You cannot take damaged for 2 seconds after killing an enemy.
     id: 6
-  - text: You cannot get damaged for the first 5 seconds of each stage.
+  - text: You cannot take damage for 0.5 seconds after attacking an enemy
     id: 7
   - text: Your movement speed is increased.
     id: 8
@@ -562,7 +613,7 @@ MonoBehaviour:
     id: 15
   - text: After you dash you take no damage for 0.5 seconds.
     id: 16
-  - text: After you dash you deal double damage for 1.5 seconds.
+  - text: After you dash you deal double damage for 1.5 seconds
     id: 17
   - text: After you dash 10 times in a stage (each stage) you get a top hat.
     id: 18
@@ -605,9 +656,9 @@ MonoBehaviour:
     id: 16
   - text: The first enemy that hits you each stage deals double damage.
     id: 17
-  - text: If you have more than 5 top hats enemies deal double damage.
+  - text: If you have 7 or more top hats enemies deal double damage.
     id: 18
-  - text: You deal no damage for the first 5 seconds of eachs tage.
+  - text: You deal no damage for 0.5 seconds after attacking.
     id: 19
   - text: You deal no damage for 1 seconds after having dashed.
     id: 20

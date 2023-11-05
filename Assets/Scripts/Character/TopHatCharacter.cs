@@ -45,6 +45,18 @@ public class TopHatCharacter : Actor
 		Death.InitState(this);
 
 		_currentState = Idle;
+
+		if(TakeAbilities.instance.gainTopHatOnStage1)
+        {
+			_health.IncreaseMaxHealth(1, false);
+			_health.Heal(1);
+        }
+
+		if (TakeAbilities.instance.gainTopHatOnStage2)
+		{
+			_health.IncreaseMaxHealth(1, false);
+			_health.Heal(1);
+		}
 	}
 
 	private void OnEnable()

@@ -80,7 +80,7 @@ public class Attack : CharacterState
 			EnemySpawner spawner = FindAnyObjectByType<EnemySpawner>();
 			for (int i = 0; i < spawner._enemyParent.childCount; i++)
 			{
-				spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().GetNoDamageForTime(0.5f);
+				spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().TakeNoDamageForTime(0.5f);
 			}
 		}
 
