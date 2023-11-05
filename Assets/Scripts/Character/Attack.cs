@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Attack : CharacterState
@@ -9,6 +10,9 @@ public class Attack : CharacterState
 	private CharacterAnimEvents _characterAnimEvents;
 
 	private TopHatInput _topHatInput;
+
+	[SerializeField]
+	private TrailRenderer _weaponTrail;
 
 	[SerializeField]
 	private DamageZone _stabDamageZone;
@@ -33,6 +37,9 @@ public class Attack : CharacterState
 		_characterAnimEvents.OnAttackFinished += OnAttackAnimFinished;
 		_characterAnimEvents.OnCanComboAttack += CanAttack;
 		_characterAnimEvents.OnCanIncreaseComboCounter += CanIncreaseComboCounter;
+
+		_characterAnimEvents.OnActivateWeaponTrail += ActivateWeaponTrail;
+		_characterAnimEvents.OnDeactivateWeaponTrail += DeactivateWeaponTrail;
 	}
 
 	public override void OnEnter()
@@ -47,8 +54,6 @@ public class Attack : CharacterState
 
 	private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
 	{
-		Debug.Log(_attackCounter);
-
 		if (_canIncreaseAttackCounter && _attackCounter <= 2)
 		{
 			_canIncreaseAttackCounter = false;
@@ -62,8 +67,17 @@ public class Attack : CharacterState
 	{
 		Debug.Log("Exit Attack");
 		_topHatInput.Character.Attack.performed -= Attack_performed;
+
+		//_characterAnimEvents.OnAttackFinished -= OnAttackAnimFinished;
+		//_characterAnimEvents.OnCanComboAttack -= CanAttack;
+		//_characterAnimEvents.OnCanIncreaseComboCounter -= CanIncreaseComboCounter;
+
+		//_characterAnimEvents.OnActivateWeaponTrail -= ActivateWeaponTrail;
+		//_characterAnimEvents.OnDeactivateWeaponTrail -= ActivateWeaponTrail;
+
 		_attackCounter = 0;
 		DeactivateDamageZones();
+		DeactivateWeaponTrail();
 	}
 
 	public override void OnUpdate()
@@ -115,4 +129,8 @@ public class Attack : CharacterState
 
 		damageZone.gameObject.SetActive(true);
 	}
+
+	private void ActivateWeaponTrail() => _weaponTrail.emitting = true;
+
+	private void DeactivateWeaponTrail() => _weaponTrail.emitting = false;
 }
