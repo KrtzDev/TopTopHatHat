@@ -63,6 +63,37 @@ public class Dash : CharacterState
 			StartCoroutine(ResetMoveSpeedAfterTime(1.5f));
         }
 
+		if(TakeAbilities.instance.takeNoDamageFor0_5AfterDash)
+        {
+			GameManager.instance.TopHatCharacter.GetComponent<Health>().TakeNoDamageForTime(0.5f);
+        }
+
+		if(TakeAbilities.instance.dealDoubleDamageOnNextAttack)
+        {
+			StatsTracker.instance._playerDealDoubleDamage = true;
+        }
+
+		StatsTracker.instance._dashes++;
+
+		if(TakeAbilities.instance.gainTopHatOn10Dashes)
+        {
+			if(StatsTracker.instance._dashes == 10)
+            {
+				GameManager.instance.TopHatCharacter.GetComponent<Health>().IncreaseMaxHealth(1, false);
+				GameManager.instance.TopHatCharacter.GetComponent<Health>().Heal(1);
+            }
+        }
+
+
+		if(GiveAbilities.instance.noDamageFor1AfterPlayDash)
+        {
+			EnemySpawner spawner = FindAnyObjectByType<EnemySpawner>();
+			for (int i = 0; i < spawner._enemyParent.childCount; i++)
+			{
+				spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().TakeNoDamageForTime(1);
+			}
+		}
+
 		CloseUmbrella();
 	}
 

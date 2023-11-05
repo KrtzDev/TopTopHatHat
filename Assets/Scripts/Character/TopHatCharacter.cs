@@ -24,6 +24,9 @@ public class TopHatCharacter : Actor
 	private bool _isDashing;
 	private bool _isDashOnCooldown;
 
+	public bool canTakeDamage = true;
+	public bool canDoDamage = true;
+
 	public AdditionalTopHats_Player AdditionalTopHats { get; private set; }
 
 	private bool CanDash => !_isDashing && !_isDashOnCooldown;
@@ -42,6 +45,18 @@ public class TopHatCharacter : Actor
 		Death.InitState(this);
 
 		_currentState = Idle;
+
+		if(TakeAbilities.instance.gainTopHatOnStage1)
+        {
+			_health.IncreaseMaxHealth(1, false);
+			_health.Heal(1);
+        }
+
+		if (TakeAbilities.instance.gainTopHatOnStage2)
+		{
+			_health.IncreaseMaxHealth(1, false);
+			_health.Heal(1);
+		}
 	}
 
 	private void OnEnable()
@@ -151,6 +166,9 @@ public class TopHatCharacter : Actor
 	{
 		if(other.TryGetComponent(out DamageZone damageComponent))
 		{
+			if (!canTakeDamage)
+				return;
+
 			_health.TakeDamage(damageComponent.DamageAmount);
 		}
 	}

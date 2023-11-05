@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -20,12 +21,20 @@ public class GameManager : Singleton<GameManager>
 
 	protected void Start()
 	{
-		TopHatCharacter = FindObjectOfType<TopHatCharacter>();
+		if (SceneManager.GetActiveScene().name.Contains("Level") || SceneManager.GetActiveScene().name.Contains("Test"))
+		{
+			TopHatCharacter = FindObjectOfType<TopHatCharacter>();
+		}
+
 		SceneLoader.instance.OnSceneLoadCompleted += OnSceneLoaded;
 	}
 
 	private void OnSceneLoaded()
 	{
-		TopHatCharacter = FindObjectOfType<TopHatCharacter>();
+        if (SceneManager.GetActiveScene().name.Contains("Level") || SceneManager.GetActiveScene().name.Contains("Test"))
+		{
+			TopHatCharacter = FindObjectOfType<TopHatCharacter>();
+        }
+
 	}
 }
