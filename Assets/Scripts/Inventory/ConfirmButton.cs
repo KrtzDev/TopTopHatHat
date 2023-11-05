@@ -54,6 +54,8 @@ public class ConfirmButton : MonoBehaviour
             Debug.Log("Confirm Selection");
 
             DisableNotification();
+
+			SceneLoader.instance.LoadScene(SceneLoader.instance.SceneToLoad);
         }
         else
         {

@@ -6,9 +6,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
 	protected virtual void Awake()
 	{
-		if (!instance)
+		if (instance == null)
 			instance = this as T;
 		else
-			Destroy(this);
+			Destroy(this.gameObject);
 	}
 }

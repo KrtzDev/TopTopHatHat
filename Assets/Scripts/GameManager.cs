@@ -1,8 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+	public Action LevelWon;
+
+	[SerializeField]
+	private GameObject _giveAndTakeSelectionUI;
+
 	public TopHatInput TopHatInput 
 	{ 
 		get 
@@ -34,8 +40,13 @@ public class GameManager : Singleton<GameManager>
 	{
         if (SceneManager.GetActiveScene().name.Contains("Level") || SceneManager.GetActiveScene().name.Contains("Test"))
 		{
-			TopHatCharacter = FindObjectOfType<TopHatCharacter>();
         }
+			TopHatCharacter = FindObjectOfType<TopHatCharacter>();
 
+	}
+
+	public void OpenGiveAndTakeUI()
+	{
+		Instantiate(_giveAndTakeSelectionUI);
 	}
 }

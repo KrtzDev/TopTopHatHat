@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
 	private List<Transform> _spawnPositions = new List<Transform>();
 	[SerializeField]
 	private float _spawnCooldown;
+
+	private List<Actor> _aliveEnemies = new List<Actor>();
 
 	private int NumberOfEnemiesToSpawn => _spawnPositions.Count;
 	private float _currentSpawnCooldown;
@@ -75,8 +78,10 @@ public class EnemySpawner : MonoBehaviour
 				enemy.GetComponent<Health>().TakeNoDamageForTime(5);
             }
 
-			Instantiate(enemy, _spawnPositions[i].position, Quaternion.identity, _enemyParent);
+			Actor spawnedEnemy = Instantiate(enemy, _spawnPositions[i].position, Quaternion.identity, _enemyParent);
 			actorsToRemove.Add(_enemiesToSpawn[i]);
+			spawnedEnemy.OnActorDied += RemoveFromAlivelist;
+			_aliveEnemies.Add(spawnedEnemy);
 		}
 		foreach (var actor in actorsToRemove)
 		{
@@ -86,6 +91,15 @@ public class EnemySpawner : MonoBehaviour
 
 	public void AddRandomEnemyToSpawn()
     {
-		_enemiesToSpawn.Add(StatsTracker.instance.enemyList[Random.Range(0, StatsTracker.instance.enemyList.Count)]);
+		_enemiesToSpawn.Add(StatsTracker.instance.enemyList[UnityEngine.Random.Range(0, StatsTracker.instance.enemyList.Count)]);
     }
+
+	private void RemoveFromAlivelist(Actor enemyToRemove)
+	{
+		enemyToRemove.OnActorDied -= RemoveFromAlivelist;
+
+		_aliveEnemies.Remove(enemyToRemove);
+		if (_aliveEnemies.Count <= 0 && _enemiesToSpawn.Count <= 0)
+			GameManager.instance.LevelWon.Invoke();
+	}
 }
