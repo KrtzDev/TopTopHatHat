@@ -19,6 +19,9 @@ public class Dash : CharacterState
 	[SerializeField]
 	private float _dashForce;
 
+	[SerializeField]
+	private GameObject _dashDamageZone;
+
 	private float _currentDashTime;
 
 	[field: SerializeField]
@@ -41,6 +44,7 @@ public class Dash : CharacterState
 		_rigidbody.AddForce(movedir * _dashForce, ForceMode.Impulse);
 
 		_animator.SetBool("IsDashing", true);
+		_dashDamageZone.gameObject.SetActive(true);
 		OpenUmbrella();
 	}
 
@@ -56,6 +60,7 @@ public class Dash : CharacterState
 		_rigidbody.velocity = Vector3.zero;
 
 		_animator.SetBool("IsDashing", false);
+		_dashDamageZone.gameObject.SetActive(false);
 
 		if(TakeAbilities.instance.moveSpeedOnDash)
         {

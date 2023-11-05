@@ -325,6 +325,7 @@ Transform:
   m_Children:
   - {fileID: 930477360898750058}
   - {fileID: 6894061200992242999}
+  - {fileID: 513249401760231003}
   - {fileID: 4228812300712783736}
   - {fileID: 3692450248897351575}
   m_Father: {fileID: 0}
@@ -414,6 +415,7 @@ MonoBehaviour:
   _openedUmbrella: {fileID: 2006617811257620299}
   _dashDuration: 0.2
   _dashForce: 50
+  _dashDamageZone: {fileID: 2131232732538902487}
   <DashCoolDownTime>k__BackingField: 2.5
 --- !u!114 &734123623865425131
 MonoBehaviour:
@@ -593,6 +595,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5330985414701245531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2131232732538902487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 513249401760231003}
+  - component: {fileID: 1282892781822011889}
+  - component: {fileID: 6730088464363095372}
+  m_Layer: 0
+  m_Name: DashDamageZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &513249401760231003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131232732538902487}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.55, z: 2.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3995941797888222412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282892781822011889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131232732538902487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a14003f181cbbb4bbf86e65d4ea01e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DamageAmount>k__BackingField: 1
+--- !u!65 &6730088464363095372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131232732538902487}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2, z: 3}
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1 &2143826987303909750
 GameObject:
   m_ObjectHideFlags: 0
