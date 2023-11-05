@@ -5428,6 +5428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35328e56990dac4ca3656e30338a2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfxNameGetHit: PigGetHit
+  _sfxNameDeath: PigDeath
   <EnemyMoveTowardsPlayer>k__BackingField: {fileID: 1301034321949246829}
   <EnemyAttack>k__BackingField: {fileID: 7194780792182530553}
 --- !u!114 &1301034321949246829
@@ -5454,6 +5456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc71832eb351ec45a0c9dc0bc4003df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfxNameAttack: PigAttack
   <AttackCooldown>k__BackingField: 2
   <AttackRange>k__BackingField: 3
   _slimeAttackDamageZone: {fileID: 6565331678568631090}

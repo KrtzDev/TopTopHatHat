@@ -49,7 +49,7 @@ public class Attack : CharacterState
 
 		_animator.SetTrigger("Attack1");
 		ActivateDamageZone(_stabDamageZone);
-		_attackCounter = 1;
+		_attackCounter = 0;
 		SFXManager.instance.PlaySound("PlayerAttack1");
 	}
 

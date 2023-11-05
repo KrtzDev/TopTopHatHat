@@ -33,6 +33,7 @@ public class Dash : CharacterState
 
 	public override void OnEnter()
 	{
+		SFXManager.instance.PlaySound("PlayerDash");
 		Debug.Log("Enter Dash");
 
 		_currentDashTime = _dashDuration;
@@ -41,7 +42,6 @@ public class Dash : CharacterState
 		_rigidbody.AddForce(movedir * _dashForce, ForceMode.Impulse);
 
 		_animator.SetBool("IsDashing", true);
-		SFXManager.instance.PlaySound("PlayerDash");
 		OpenUmbrella();
 	}
 
