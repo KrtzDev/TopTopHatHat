@@ -36,6 +36,8 @@ public class TopHatCharacter : Actor
 		_topHatInput = GameManager.instance.TopHatInput;
 		_health = GetComponent<Health>();
 
+		_health.SetHealth(StatsTracker.instance.playerHP);
+
 		this.AdditionalTopHats = gameObject.GetComponentInChildren<AdditionalTopHats_Player>();
 
 		Idle.InitState(this);

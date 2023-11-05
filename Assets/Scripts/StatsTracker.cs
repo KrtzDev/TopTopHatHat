@@ -9,9 +9,12 @@ public class StatsTracker : Singleton<StatsTracker>
 
 	public bool _playerHasFirstKill = false;
 	public bool _playerHasMitigatedFirstDamage = false;
+	public bool _playerWasAlmostDead = false;
 	public bool _playerDealDoubleDamage = false;
 	public int _killedEnemies = 0;
 	public int _dashes = 0;
+
+	public int playerHP = 10;
 
 	protected void Start()
 	{

@@ -1,4 +1,6 @@
 using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -39,6 +41,13 @@ public class Health : MonoBehaviour
 		}
     }
 
+	public void SetHealth(int value)
+	{
+		_currentHealth = value;
+		if(_currentHealth > _maxHealth)
+			_maxHealth = _currentHealth;
+	}
+
     public void TakeDamage(int amount)
 	{
 		Debug.Log($"{transform.gameObject.name} was hit with {amount} Damage");
@@ -61,22 +70,23 @@ public class Health : MonoBehaviour
                 }
             }
 
-            if (TakeAbilities.instance.gain1TopHatsOn1HP)
-            {
-				if(_currentHealth - amount <= 1)
-                {
-					if(TakeAbilities.instance.mitigateFirstDamage && !StatsTracker.instance._playerHasMitigatedFirstDamage)
-                    {
-						StatsTracker.instance._playerHasMitigatedFirstDamage = true;
-						return;
-                    }
-					else
-                    {
-						Heal(1);
-                    }
+			if (_currentHealth - amount <= 1)
+			{
+				if (TakeAbilities.instance.mitigateFirstDamage && !StatsTracker.instance._playerHasMitigatedFirstDamage)
+				{
+					StatsTracker.instance._playerHasMitigatedFirstDamage = true;
+					return;
+				}
 
-                }
-            }
+				if (TakeAbilities.instance.gain1TopHatsOn1HP)
+				{
+					if (!StatsTracker.instance._playerWasAlmostDead)
+					{
+						StatsTracker.instance._playerWasAlmostDead = true;
+						Heal(1);
+					}
+				}
+			}
 		}
 
 		if (gameObject.GetComponent<TopHatEnemy>() != null)
@@ -132,6 +142,8 @@ public class Health : MonoBehaviour
             {
 				TakeNoDamageForTime(2);
             }
+
+			StatsTracker.instance.playerHP = _currentHealth;
         }
 
 		if(gameObject.GetComponent<TopHatEnemy>() != null)
@@ -161,11 +173,11 @@ public class Health : MonoBehaviour
 	public void Heal(int amount)
 	{
 		_currentHealth += amount;
-		_currentHealth = Mathf.Clamp(_currentHealth,0,_maxHealth);
 
 		if (gameObject.GetComponent<TopHatCharacter>() != null)
 		{
 			GameManager.instance.TopHatCharacter.AdditionalTopHats.AddTopHat(GameManager.instance.TopHatCharacter.AdditionalTopHats.GetLastTopHatPosition() + 1);
+			StatsTracker.instance.playerHP = _currentHealth;
 		}
 		else if (gameObject.GetComponent<TopHatEnemy>() != null)
 		{

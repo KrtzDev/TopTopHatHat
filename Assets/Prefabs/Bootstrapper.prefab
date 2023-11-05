@@ -257,9 +257,11 @@ MonoBehaviour:
   - {fileID: 7452747485201204951, guid: 5aedfbfa3dcf32644a1045bb795b4933, type: 3}
   _playerHasFirstKill: 0
   _playerHasMitigatedFirstDamage: 0
+  _playerWasAlmostDead: 0
   _playerDealDoubleDamage: 0
   _killedEnemies: 0
   _dashes: 0
+  playerHP: 10
 --- !u!1 &5116899147435952761
 GameObject:
   m_ObjectHideFlags: 0
