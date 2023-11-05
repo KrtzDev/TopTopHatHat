@@ -878,6 +878,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: abdc5abb79ae4704689e89c38ff274ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1330591581688906501, guid: abdc5abb79ae4704689e89c38ff274ef,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1448,6 +1453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pig
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12526976b9850ac4498a9551f2a854c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
