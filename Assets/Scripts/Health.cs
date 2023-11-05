@@ -24,7 +24,14 @@ public class Health : MonoBehaviour
 
 		for(int i = 0; i < amount; i++)
         {
-			GameManager.instance.TopHatCharacter.AdditionalTopHats.RemoveTopHat(GameManager.instance.TopHatCharacter.AdditionalTopHats.GetLastTopHatPosition());
+			if(gameObject.GetComponent<TopHatCharacter>() != null)
+            {
+				GameManager.instance.TopHatCharacter.AdditionalTopHats.RemoveTopHat(GameManager.instance.TopHatCharacter.AdditionalTopHats.GetLastTopHatPosition());
+            }
+			else if (gameObject.GetComponent<TopHatEnemy>() != null)
+            {
+				gameObject.GetComponent<AdditionalTopHats_Enemy>().RemoveTopHat(gameObject.GetComponent<AdditionalTopHats_Enemy>().GetLastTopHatPosition());
+            }
         }
 
 		if (_currentHealth <= 0)
@@ -35,6 +42,15 @@ public class Health : MonoBehaviour
 	{
 		_currentHealth += amount;
 		_currentHealth = Mathf.Clamp(_currentHealth,0,_maxHealth);
+
+		if (gameObject.GetComponent<TopHatCharacter>() != null)
+		{
+			GameManager.instance.TopHatCharacter.AdditionalTopHats.AddTopHat(GameManager.instance.TopHatCharacter.AdditionalTopHats.GetLastTopHatPosition() + 1);
+		}
+		else if (gameObject.GetComponent<TopHatEnemy>() != null)
+		{
+			gameObject.GetComponent<AdditionalTopHats_Enemy>().AddTopHat(gameObject.GetComponent<AdditionalTopHats_Enemy>().GetLastTopHatPosition() + 1);
+		}
 	}
 
 	private void Death()

@@ -24,7 +24,7 @@ public class TopHatCharacter : Actor
 	private bool _isDashing;
 	private bool _isDashOnCooldown;
 
-	public AdditionalTopHats AdditionalTopHats { get; private set; }
+	public AdditionalTopHats_Player AdditionalTopHats { get; private set; }
 
 	private bool CanDash => !_isDashing && !_isDashOnCooldown;
 
@@ -33,7 +33,7 @@ public class TopHatCharacter : Actor
 		_topHatInput = GameManager.instance.TopHatInput;
 		_health = GetComponent<Health>();
 
-		this.AdditionalTopHats = gameObject.GetComponentInChildren<AdditionalTopHats>();
+		this.AdditionalTopHats = gameObject.GetComponentInChildren<AdditionalTopHats_Player>();
 
 		Idle.InitState(this);
 		Movement.InitState(this);

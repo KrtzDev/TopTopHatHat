@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137724fb7cc238c40a12530ad492c212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topHat_Prefab: {fileID: 879991465947920870, guid: ab15089d8e8cbaf42b68c83d6ffbcf1d,
+  _topHat_Prefab: {fileID: 879991465947920870, guid: 8e7aabfc8ac2a164bbfe5bedb44f4377,
     type: 3}
   _topHatSizeIncrease: 0.033
   _topHatHeightIncrease: 0.018

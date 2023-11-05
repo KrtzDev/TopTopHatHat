@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AdditionalTopHats : MonoBehaviour
+public class AdditionalTopHats_Player : MonoBehaviour
 {
     [SerializeField] private GameObject _topHat_Prefab;
 
