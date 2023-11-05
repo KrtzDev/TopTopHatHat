@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c46ca3c01c5e94dab4045fb673af5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _giveAndTakeSelectionUI: {fileID: 2016228752022559008, guid: eac6d46dad31e08448ade6ab9959afb6,
+    type: 3}
   <TopHatCharacter>k__BackingField: {fileID: 0}
   <PauseMenu>k__BackingField: {fileID: 331906898176183538}
 --- !u!1 &1395830376552663547
@@ -490,17 +492,17 @@ PrefabInstance:
     - target: {fileID: 1802583925756405141, guid: b4df4ca394e9fd041abd16efd7d095ee,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1802583925756405141, guid: b4df4ca394e9fd041abd16efd7d095ee,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1802583925756405141, guid: b4df4ca394e9fd041abd16efd7d095ee,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1802583925756405141, guid: b4df4ca394e9fd041abd16efd7d095ee,
         type: 3}
