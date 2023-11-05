@@ -63,6 +63,15 @@ public class Dash : CharacterState
 			StartCoroutine(ResetMoveSpeedAfterTime(1.5f));
         }
 
+		if(GiveAbilities.instance.noDamageFor1AfterPlayDash)
+        {
+			EnemySpawner spawner = FindAnyObjectByType<EnemySpawner>();
+			for (int i = 0; i < spawner._enemyParent.childCount; i++)
+			{
+				spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().GetNoDamageForTime(1);
+			}
+		}
+
 		CloseUmbrella();
 	}
 

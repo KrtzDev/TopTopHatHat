@@ -24,6 +24,9 @@ public class TopHatCharacter : Actor
 	private bool _isDashing;
 	private bool _isDashOnCooldown;
 
+	public bool canTakeDamage = true;
+	public bool canDoDamage = true;
+
 	public AdditionalTopHats_Player AdditionalTopHats { get; private set; }
 
 	private bool CanDash => !_isDashing && !_isDashOnCooldown;
@@ -151,6 +154,9 @@ public class TopHatCharacter : Actor
 	{
 		if(other.TryGetComponent(out DamageZone damageComponent))
 		{
+			if (!canTakeDamage)
+				return;
+
 			_health.TakeDamage(damageComponent.DamageAmount);
 		}
 	}

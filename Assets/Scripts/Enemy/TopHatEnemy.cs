@@ -70,7 +70,6 @@ public class TopHatEnemy : Actor
 		if (other.TryGetComponent(out DamageZone damageComponent))
 		{
 			_health.TakeDamage(damageComponent.DamageAmount);
-
 		}
 	}
 

@@ -75,6 +75,15 @@ public class Attack : CharacterState
 		//_characterAnimEvents.OnActivateWeaponTrail -= ActivateWeaponTrail;
 		//_characterAnimEvents.OnDeactivateWeaponTrail -= ActivateWeaponTrail;
 
+		if (GiveAbilities.instance.noDamageFor0_5AfterAttacking)
+		{
+			EnemySpawner spawner = FindAnyObjectByType<EnemySpawner>();
+			for (int i = 0; i < spawner._enemyParent.childCount; i++)
+			{
+				spawner._enemyParent.GetChild(i).gameObject.GetComponent<Health>().GetNoDamageForTime(0.5f);
+			}
+		}
+
 		_attackCounter = 0;
 		DeactivateDamageZones();
 		DeactivateWeaponTrail();

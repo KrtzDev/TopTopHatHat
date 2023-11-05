@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
-	private Transform _enemyParent;
+	public Transform _enemyParent;
 
 	[SerializeField]
 	private List<Actor> _enemiesToSpawn = new List<Actor>();
@@ -37,7 +38,39 @@ public class EnemySpawner : MonoBehaviour
 		List<Actor> actorsToRemove = new List<Actor>();
 		for (int i = 0; i < Mathf.Min(NumberOfEnemiesToSpawn, _enemiesToSpawn.Count); i++)
 		{
-			Instantiate(_enemiesToSpawn[i], _spawnPositions[i].position, Quaternion.identity, _enemyParent);
+			TopHatEnemy enemy = _enemiesToSpawn[i].GetComponent<TopHatEnemy>();
+
+			if(GiveAbilities.instance.moveSpeed0)
+            {
+				enemy.GetComponent<NavMeshAgent>().speed += 0.7f;
+            }
+
+			if (GiveAbilities.instance.moveSpeed1)
+			{
+				enemy.GetComponent<NavMeshAgent>().speed += 0.7f;
+			}
+
+			if (GiveAbilities.instance.moveSpeed2)
+			{
+				enemy.GetComponent<NavMeshAgent>().speed += 1.5f;
+			}
+
+			if(GiveAbilities.instance.extraHat1)
+            {
+				enemy.GetComponent<Health>().IncreaseMaxHealth(1, true);
+            }
+
+			if (GiveAbilities.instance.extraHat2)
+			{
+				enemy.GetComponent<Health>().IncreaseMaxHealth(1, true);
+			}
+
+			if(GiveAbilities.instance.noDamageFor5)
+            {
+				enemy.GetComponent<Health>().GetNoDamageForTime(5);
+            }
+
+			Instantiate(enemy, _spawnPositions[i].position, Quaternion.identity, _enemyParent);
 			actorsToRemove.Add(_enemiesToSpawn[i]);
 		}
 		foreach (var actor in actorsToRemove)
@@ -45,4 +78,9 @@ public class EnemySpawner : MonoBehaviour
 			_enemiesToSpawn.Remove(actor);
 		}
 	}
+
+	public void AddRandomEnemyToSpawn()
+    {
+		_enemiesToSpawn.Add(StatsTracker.instance.enemyList[Random.Range(0, StatsTracker.instance.enemyList.Count)]);
+    }
 }

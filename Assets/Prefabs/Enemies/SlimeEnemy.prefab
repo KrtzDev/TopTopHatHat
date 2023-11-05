@@ -5098,7 +5098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1e58dbe6308154e847ade1fc8c500c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
+  _maxHealth: 3
 --- !u!114 &4779180023410175219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5113,12 +5113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _topHat_Prefab: {fileID: 879991465947920870, guid: ab15089d8e8cbaf42b68c83d6ffbcf1d,
     type: 3}
-  _topHatSizeIncrease: 0.033
-  _topHatHeightIncrease: 0.018
-  _randomXRotationMax: 15
-  _randomXRotationMin: -15
-  _randomZRotationMax: 15
-  _randomZRotationMin: -15
+  _topHatSizeIncrease: 0.0315
+  _topHatHeightIncrease: 0.016
+  _randomXRotationMax: 20
+  _randomXRotationMin: -20
+  _randomZRotationMax: 20
+  _randomZRotationMin: -20
   _topHatList:
   - {fileID: 6733684598975149814}
   - {fileID: 4003811800518470812}

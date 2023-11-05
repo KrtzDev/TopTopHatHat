@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17511088, g: 0.21907213, b: 0.3013723, a: 1}
+  m_IndirectSpecularColor: {r: 0.17511049, g: 0.21907197, b: 0.3013715, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3508,6 +3508,11 @@ PrefabInstance:
     - target: {fileID: 8676058979309632702, guid: 6673ae12c75dc544e893db0bc9dc3f98,
         type: 3}
       propertyPath: m_Name
+      value: EnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676058979309632702, guid: 6673ae12c75dc544e893db0bc9dc3f98,
+        type: 3}
+      propertyPath: m_TagString
       value: EnemySpawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
