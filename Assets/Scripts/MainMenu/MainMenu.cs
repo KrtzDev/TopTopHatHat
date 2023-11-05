@@ -7,6 +7,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _mainMenuButtons;
     [SerializeField] private GameObject _settingsMenu;
     [SerializeField] private GameObject _controlsMenu;
+    [SerializeField] private Persistent _bootsTrapper; 
+
+    private void Awake()
+    {
+        Destroy(FindAnyObjectByType<Persistent>().gameObject);
+
+        Instantiate(_bootsTrapper);
+    }
 
     public void StartGame()
     {
