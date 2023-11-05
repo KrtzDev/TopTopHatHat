@@ -72,6 +72,8 @@ public class TopHatCharacter : Actor
 		_topHatInput.Character.Dash.performed += DashInput;
 
 		_topHatInput.Character.Attack.performed += AttackInput;
+
+		_topHatInput.Character.Pause.performed += PauseInput;
 	}
 
 
@@ -146,6 +148,12 @@ public class TopHatCharacter : Actor
 		else
 			TransitionToState(Idle);
 	}
+
+	private void PauseInput(InputAction.CallbackContext context)
+    {
+		Time.timeScale = 0;
+		GameManager.instance.PauseMenu.gameObject.SetActive(true);
+    }
 
 	public void TransitionToState(CharacterState characterState)
 	{

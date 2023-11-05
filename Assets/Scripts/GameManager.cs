@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
 
 	[field: SerializeField]
 	public TopHatCharacter TopHatCharacter { get; private set; }
+	[field: SerializeField] public PauseMenu PauseMenu { get; private set; }
 
 	protected void Start()
 	{

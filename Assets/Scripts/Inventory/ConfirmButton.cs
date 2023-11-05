@@ -27,6 +27,7 @@ public class ConfirmButton : MonoBehaviour
             {
                 // put used Tasks to Ability Manager
                 AbilityManager.instance.AddToTakeList(_usedTakeTasks[i]);
+                GameManager.instance.PauseMenu.AddTaskToText_Take(_usedTakeTasks[i].text);
             }
 
             for (int i = 0; i < _NOTusedTakeTasks.Count; i++)
@@ -39,6 +40,7 @@ public class ConfirmButton : MonoBehaviour
             {
                 // put used Tasks to Ability Manager
                 AbilityManager.instance.AddToGiveList(_usedGiveTasks[i]);
+                GameManager.instance.PauseMenu.AddTaskToText_Give(_usedGiveTasks[i].text);
             }
 
             for (int i = 0; i < _NOTusedGiveTasks.Count; i++)
