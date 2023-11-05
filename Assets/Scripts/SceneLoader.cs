@@ -15,7 +15,12 @@ public class SceneLoader : Singleton<SceneLoader>
 		currentScene = sceneName;
 	}
 
-	private void SceneLoadCompleted(AsyncOperation operation)
+    public void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadSceneAsync(sceneIndex).completed += SceneLoadCompleted;
+    }
+
+    private void SceneLoadCompleted(AsyncOperation operation)
 	{
 		OnSceneLoadCompleted();
 	}
