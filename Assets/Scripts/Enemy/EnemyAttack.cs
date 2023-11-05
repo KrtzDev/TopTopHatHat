@@ -13,6 +13,8 @@ public class EnemyAttack : EnemyState
 
 	[SerializeField]
 	private DamageZone _slimeAttackDamageZone;
+	[SerializeField]
+	private ParticleSystem _slimeAttackParticles;
 
 	private NavMeshAgent _navmeshAgent;
 	private Animator _animator;
@@ -38,9 +40,10 @@ public class EnemyAttack : EnemyState
 		_navmeshAgent.isStopped = true;
 
 		_animEvents.OnAttackFinishedAnimEvent += AttackFinished;
-		_animator.SetTrigger("Attack");
+		_animEvents.OnActivateDamageZoneAnimEvent += ActivateDamageZone;
+		_animEvents.OnDeactivateDamageZoneAnimEvent += DeactivateDamageZone;
 
-		_slimeAttackDamageZone.gameObject.SetActive(true);
+		_animator.SetTrigger("Attack");
 	}
 
 	public override void OnExit()
@@ -50,8 +53,7 @@ public class EnemyAttack : EnemyState
 		_navmeshAgent.isStopped = false;
 
 		AttackCooldown = _attackCooldown;
-
-		_slimeAttackDamageZone.gameObject.SetActive(false);
+		DeactivateDamageZone();
 	}
 
 	public override void OnUpdate()
@@ -66,5 +68,17 @@ public class EnemyAttack : EnemyState
 	public void TickCooldown(float deltaTime)
 	{
 		AttackCooldown -= deltaTime;
+	}
+
+	private void ActivateDamageZone()
+	{
+		_slimeAttackDamageZone.gameObject.SetActive(true);
+		_slimeAttackParticles.Play(true);
+	}
+
+	private void DeactivateDamageZone()
+	{
+		_slimeAttackDamageZone.gameObject.SetActive(false);
+		_slimeAttackParticles.Stop(true);
 	}
 }
