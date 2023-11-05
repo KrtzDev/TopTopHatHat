@@ -43,42 +43,42 @@ public class EnemySpawner : MonoBehaviour
 		{
 			TopHatEnemy enemy = _enemiesToSpawn[i].GetComponent<TopHatEnemy>();
 
+			Actor spawnedEnemy = Instantiate(enemy, _spawnPositions[i].position, Quaternion.identity, _enemyParent);
 			if(GiveAbilities.instance.moveSpeed0)
             {
-				enemy.GetComponent<NavMeshAgent>().speed += 0.7f;
+				spawnedEnemy.GetComponent<NavMeshAgent>().speed += 0.7f;
             }
 
 			if (GiveAbilities.instance.moveSpeed1)
 			{
-				enemy.GetComponent<NavMeshAgent>().speed += 0.7f;
+				spawnedEnemy.GetComponent<NavMeshAgent>().speed += 0.7f;
 			}
 
 			if (GiveAbilities.instance.moveSpeed2)
 			{
-				enemy.GetComponent<NavMeshAgent>().speed += 1.5f;
+				spawnedEnemy.GetComponent<NavMeshAgent>().speed += 1.5f;
 			}
 
 			if(TakeAbilities.instance.decreaseEnemyMovementspeed)
             {
-				enemy.GetComponent<NavMeshAgent>().speed *= 0.675f;
+				spawnedEnemy.GetComponent<NavMeshAgent>().speed *= 0.675f;
             }
 
 			if(GiveAbilities.instance.extraHat1)
             {
-				enemy.GetComponent<Health>().IncreaseMaxHealth(1, true);
+				spawnedEnemy.GetComponent<Health>().IncreaseMaxHealth(1, true);
             }
 
 			if (GiveAbilities.instance.extraHat2)
 			{
-				enemy.GetComponent<Health>().IncreaseMaxHealth(1, true);
+				spawnedEnemy.GetComponent<Health>().IncreaseMaxHealth(1, true);
 			}
 
 			if(GiveAbilities.instance.noDamageFor5)
             {
-				enemy.GetComponent<Health>().TakeNoDamageForTime(5);
+				spawnedEnemy.GetComponent<Health>().TakeNoDamageForTime(5);
             }
 
-			Actor spawnedEnemy = Instantiate(enemy, _spawnPositions[i].position, Quaternion.identity, _enemyParent);
 			actorsToRemove.Add(_enemiesToSpawn[i]);
 			spawnedEnemy.OnActorDied += RemoveFromAlivelist;
 			_aliveEnemies.Add(spawnedEnemy);

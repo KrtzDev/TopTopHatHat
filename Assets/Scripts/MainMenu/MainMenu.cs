@@ -11,9 +11,9 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        Destroy(FindAnyObjectByType<Persistent>().gameObject);
+        //Destroy(FindAnyObjectByType<Persistent>().gameObject);
 
-        Instantiate(_bootsTrapper);
+        //Instantiate(_bootsTrapper);
     }
 
     public void StartGame()
