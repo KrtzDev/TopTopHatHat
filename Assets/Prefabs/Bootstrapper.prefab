@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &738056264311028801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791110461751330816}
+  - component: {fileID: 8709510986936724982}
+  m_Layer: 0
+  m_Name: PostProcessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &791110461751330816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738056264311028801}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8166703299903933824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8709510986936724982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738056264311028801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
 --- !u!1 &1282797741462426468
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +304,7 @@ MonoBehaviour:
   - {fileID: 792778081766950990, guid: 5a68e53d714bfe84caeb2d9ba42a88e5, type: 3}
   - {fileID: 6098044891387405305, guid: b9854aa430dc09c4188db2fd33469e8b, type: 3}
   - {fileID: 7452747485201204951, guid: 5aedfbfa3dcf32644a1045bb795b4933, type: 3}
+  - {fileID: 5068698617356162100, guid: 00d3497a74246f544ad3b777c863011a, type: 3}
   _playerHasFirstKill: 0
   _playerHasMitigatedFirstDamage: 0
   _playerWasAlmostDead: 0
@@ -346,6 +396,7 @@ Transform:
   - {fileID: 5428040141840119147}
   - {fileID: 1310562513006625376}
   - {fileID: 6272583312688791325}
+  - {fileID: 791110461751330816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6134840925982482691
