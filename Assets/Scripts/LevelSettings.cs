@@ -19,6 +19,13 @@ public class LevelSettings : MonoBehaviour
             GameManager.instance.TopHatCharacter.transform.position = _playerPos;
         }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Health _health = GameManager.instance.TopHatCharacter.GetComponent<Health>();
+            _health.IncreaseMaxHealth(1, false);
+            _health.Heal(1);
+        }
+
         if (Input.GetKeyDown(KeyCode.N))
         {
             ChangeLevel("prev");

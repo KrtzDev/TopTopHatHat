@@ -175,6 +175,9 @@ public class Health : MonoBehaviour
 
 	public void Heal(int amount)
 	{
+		if (_currentHealth >= 50)
+			return;
+
 		_currentHealth += amount;
 
 		if (gameObject.GetComponent<TopHatCharacter>() != null)
