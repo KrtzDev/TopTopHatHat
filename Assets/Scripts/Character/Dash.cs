@@ -10,6 +10,11 @@ public class Dash : CharacterState
 	private Animator _animator;
 
 	[SerializeField]
+	private GameObject _closedUmbrella;
+	[SerializeField]
+	private GameObject _openedUmbrella;
+
+	[SerializeField]
 	private float _dashDuration;
 	[SerializeField]
 	private float _dashForce;
@@ -36,6 +41,13 @@ public class Dash : CharacterState
 		_rigidbody.AddForce(movedir * _dashForce, ForceMode.Impulse);
 
 		_animator.SetBool("IsDashing", true);
+		OpenUmbrella();
+	}
+
+	private void OpenUmbrella()
+	{
+		_closedUmbrella.SetActive(false);
+		_openedUmbrella.SetActive(true);
 	}
 
 	public override void OnExit()
@@ -50,6 +62,14 @@ public class Dash : CharacterState
 			FindObjectOfType<TopHatCharacter>().Movement.IncreaseMoveSpeed(1);
 			StartCoroutine(ResetMoveSpeedAfterTime(1.5f));
         }
+
+		CloseUmbrella();
+	}
+
+	private void CloseUmbrella()
+	{
+		_closedUmbrella.SetActive(true);
+		_openedUmbrella.SetActive(false);
 	}
 
 	public override void OnUpdate()
