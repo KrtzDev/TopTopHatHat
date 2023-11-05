@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class TopHatEnemy : Actor
 {
+	public string _sfxNameAttack;
+	public string _sfxNameGetHit;
+	public string _sfxNameDeath;
+
 	private EnemyState _currentState;
 
 	[field: SerializeField]
@@ -50,7 +54,10 @@ public class TopHatEnemy : Actor
 		_hasAttackCooldown = EnemyAttack.AttackCooldown >= 0;
 
 		if(CanAttack)
+        {
+			SFXManager.instance.PlaySound(_sfxNameAttack);
 			TransitionToState(EnemyAttack);
+		}
 	}
 
 	private void TransitionToState(EnemyState enemyState)

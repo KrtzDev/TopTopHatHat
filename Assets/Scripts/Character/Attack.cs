@@ -49,7 +49,8 @@ public class Attack : CharacterState
 
 		_animator.SetTrigger("Attack1");
 		ActivateDamageZone(_stabDamageZone);
-		_attackCounter = 0;
+		_attackCounter = 1;
+		SFXManager.instance.PlaySound("PlayerAttack1");
 	}
 
 	private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -60,7 +61,9 @@ public class Attack : CharacterState
 			_attackCounter++;
 		}
 		if (_attackCounter > 2)
+        {
 			_attackCounter = 0;
+        }
 	}
 
 	public override void OnExit()
@@ -96,11 +99,13 @@ public class Attack : CharacterState
 			if (_attackCounter == 1)
 			{
 				_animator.SetTrigger("Attack2");
+				SFXManager.instance.PlaySound("PlayerAttack2");
 				ActivateDamageZone(_slashDamageZone);
 			}
 			if (_attackCounter == 2)
 			{
 				_animator.SetTrigger("Attack3");
+				SFXManager.instance.PlaySound("PlayerAttack3");
 				ActivateDamageZone(_topSlashDamageZone);
 			}
 

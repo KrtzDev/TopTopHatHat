@@ -30,7 +30,8 @@ public class CollectibleTopHat : MonoBehaviour
     private void CollectTopHat()
     {
         _isCollected = true;
-        _source.Play();
+        SFXManager.instance.PlaySound("NewTopHat");
+        // _source.Play();
         gameObject.SetActive(false);
     }
 }

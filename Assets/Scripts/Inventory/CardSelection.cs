@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using System;
 
-public class CardSelection : MonoBehaviour
+public class CardSelection : MonoBehaviour, ISelectHandler
 {
     [SerializeField] private bool _isPicked;
     private Vector3 _newScale = new Vector3(2.5f, 2.5f, 1f);
@@ -43,6 +43,7 @@ public class CardSelection : MonoBehaviour
     private void PickCard()
     {
         _isPicked = true;
+        SFXManager.instance.PlaySound("SelectCard");
         gameObject.GetComponent<RectTransform>().localScale = _newScale;
         ColorBlock tempColorBlock = gameObject.GetComponent<Button>().colors;
         tempColorBlock.normalColor = _pickedColor;
@@ -52,6 +53,7 @@ public class CardSelection : MonoBehaviour
     private void UnPickCard()
     {
         _isPicked = false;
+        SFXManager.instance.PlaySound("UnselectCard");
         gameObject.GetComponent<RectTransform>().localScale = _oldScale;
         gameObject.GetComponent<Button>().colors = _startColorBlock;
     }
@@ -97,5 +99,10 @@ public class CardSelection : MonoBehaviour
     public TaskAndGiveGenerator.GiveByID ActiveGiveTask()
     {
         return _giveTask;
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        SFXManager.instance.PlaySound("ButtonSelect");
     }
 }

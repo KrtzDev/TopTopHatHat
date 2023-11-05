@@ -41,6 +41,7 @@ public class Dash : CharacterState
 		_rigidbody.AddForce(movedir * _dashForce, ForceMode.Impulse);
 
 		_animator.SetBool("IsDashing", true);
+		SFXManager.instance.PlaySound("PlayerDash");
 		OpenUmbrella();
 	}
 

@@ -22,6 +22,7 @@ public class DoorNextLevel : MonoBehaviour
 	private void OpenDoorToNextLevel()
 	{
 		_animator.SetTrigger("Exit_Open");
+		SFXManager.instance.PlaySound("DoorUnlock");
 	}
 
 	private void OnTriggerEnter(Collider other)

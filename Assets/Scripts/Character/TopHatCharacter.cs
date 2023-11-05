@@ -140,7 +140,7 @@ public class TopHatCharacter : Actor
 	private void AttackInput(InputAction.CallbackContext context)
 	{
 		if(_currentState != Dash && _currentState != Attack)
-		TransitionToState(Attack);
+			TransitionToState(Attack);
 	}
 
 	private void AttackFinished()

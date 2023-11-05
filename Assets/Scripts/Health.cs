@@ -144,11 +144,14 @@ public class Health : MonoBehaviour
             }
 
 			StatsTracker.instance.playerHP = _currentHealth;
-        }
+			SFXManager.instance.PlaySound("PlayerGetHit");
+		}
 
 		if(gameObject.GetComponent<TopHatEnemy>() != null)
         {
-			if(TakeAbilities.instance.takeNoDamageFor0_5AfterAttackingAnEnemy)
+			SFXManager.instance.PlaySound(gameObject.GetComponent<TopHatEnemy>()._sfxNameGetHit);
+
+			if (TakeAbilities.instance.takeNoDamageFor0_5AfterAttackingAnEnemy)
             {
 				GameManager.instance.TopHatCharacter.GetComponent<Health>().TakeNoDamageForTime(0.5f);
             }
@@ -190,6 +193,7 @@ public class Health : MonoBehaviour
 		if (gameObject.GetComponent<TopHatEnemy>() != null)
         {
 			StatsTracker.instance._killedEnemies++;
+			SFXManager.instance.PlaySound(gameObject.GetComponent<TopHatEnemy>()._sfxNameDeath);
 
 			if (!StatsTracker.instance._playerHasFirstKill)
 			{
@@ -233,6 +237,12 @@ public class Health : MonoBehaviour
 
 			}
         }
+
+		if (gameObject.GetComponent<TopHatCharacter>() != null)
+		{
+			SFXManager.instance.PlaySound("PlayerDeath");
+        }
+
 
 		_owningActor.OnActorDeath();
 	}
